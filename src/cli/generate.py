@@ -109,16 +109,26 @@ def _generate_single_unit(config, unit_name: str, show_images: bool = False, pro
         console.print("\n[yellow]Run 'flashbang extract' first to extract PDFs to markdown.[/yellow]")
         return False
 
+    # Create generator early to calculate actual target
+    generator = create_card_generator(config, provider=provider)
+
+    # Calculate actual target based on page count (1.5 cards per page)
+    page_count = generator.get_pdf_page_count(unit_name)
+    if page_count > 0:
+        actual_target = int(page_count * 1.5)
+        target_display = f"{actual_target} cards ({page_count} pages × 1.5)"
+    else:
+        actual_target = target_cards
+        target_display = f"{target_cards} cards (config)"
+
     # Display header
     provider_name = provider or config.generation_provider
     console.print(Panel(
         f"[bold cyan]GENERATING FLASHCARDS: {unit_name}[/bold cyan]\n"
-        f"[dim]Provider: {provider_name} | Target: {target_cards} cards[/dim]"
+        f"[dim]Provider: {provider_name} | Target: {target_display}[/dim]"
     ))
 
     try:
-        # Create generator
-        generator = create_card_generator(config, provider=provider)
 
         # Show provider info
         info = generator.get_provider_info()
@@ -162,7 +172,7 @@ def _generate_single_unit(config, unit_name: str, show_images: bool = False, pro
             display.append(f"\n  Lines: {lines}", style="yellow")
             if cards_estimate > 0:
                 display.append(f" (~{cards_estimate} cards)", style="green")
-            display.append(f"\n  Target: {target_cards} cards", style="dim")
+            display.append(f"\n  Target: {actual_target} cards", style="dim")
 
             return display
 
