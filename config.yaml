@@ -54,6 +54,6 @@ generation:
   ollama:
     base_url: "http://localhost:11434"
     model: "ministral-3:14b"  # User can configure: ministral-3:8b, mistral, llama3, etc.
-    timeout: 240  # Longer timeout for larger model
+    timeout: 480  # Longer timeout for larger model
     max_retries: 3
     temperature: 0.7
