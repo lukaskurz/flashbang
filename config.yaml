@@ -1,8 +1,8 @@
 subject:
-  name: "Probabilistic Graphical Models"
-  short_name: "PGM"
-  field: "Machine Learning"
-  description: "Advanced techniques in probabilistic modeling and inference"
+  name: "Course Materials"
+  short_name: "Course"
+  field: "Education"
+  description: "Academic course materials and lecture content"
 
 prompts:
   system_context: |
@@ -16,13 +16,13 @@ prompts:
     - "Focus on concepts and intuition"
 
   example_cards:
-    - front: "Why does the forward algorithm avoid recomputing the entire history at each time step?"
-      back: "It uses <strong>recursive computation</strong>:<br>1. Propagates forward: \\(P(S^{(t+1)} \\mid o^{(1:t)}) = \\sum_{s^{(t)}} P(S^{(t+1)} \\mid s^{(t)}) P(s^{(t)} \\mid o^{(1:t)})\\)<br>2. Updates with new observation: \\(P(S^{(t+1)} \\mid o^{(1:t+1)}) \\propto P(o^{(t+1)} \\mid S^{(t+1)}) \\cdot P(S^{(t+1)} \\mid o^{(1:t)})\\)<br><br>Only needs the previous time step, not entire history!"
-      tags: "hmm forward-algorithm inference"
+    - front: "Why is this algorithm more efficient than the naive approach?"
+      back: "It uses <strong>recursive computation</strong>:<br>1. Stores intermediate results to avoid redundant calculations<br>2. Builds the solution incrementally from smaller subproblems<br>3. Only needs the previous step, not the entire history"
+      tags: "algorithms efficiency optimization"
 
-    - front: "What independence relationships exist in a v-structure (A → C ← B)?"
-      back: "1. <strong>A and B are marginally independent</strong><br>2. <strong>A and B become dependent given C</strong> (explaining away)<br>3. Observing C creates a dependency between its causes"
-      tags: "bayesian-networks independence v-structures"
+    - front: "What is the key insight behind this concept?"
+      back: "The key insight is that <strong>understanding the relationship</strong> between components:<br>1. Allows us to reason about the system systematically<br>2. Reveals underlying patterns and structures<br>3. Enables prediction and decision-making"
+      tags: "concepts understanding relationships"
 
 processing:
   extract_images: true
@@ -36,51 +36,16 @@ output:
   anki_dir: outputs/anki
   apkg_dir: outputs/apkg
 
-units:
-  "Intro.pdf":
-    unit_name: unit0_intro
-    target_cards: 30
-    tags: [unit0, introduction, overview]
+# Default settings for auto-discovered PDFs
+defaults:
+  target_cards: 60
 
-  "Unit_1.pdf":
-    unit_name: unit1_fundamentals
-    target_cards: 50
-    tags: [unit1, fundamentals, probability]
-
-  "Unit_2.pdf":
-    unit_name: unit2_concepts
-    target_cards: 60
-    tags: [unit2, concepts, notation]
-
-  "Unit_3.pdf":
-    unit_name: unit3_bayesian_networks
-    target_cards: 70
-    tags: [unit3, bayesian-networks, representation]
-
-  "Unit_4.pdf":
-    unit_name: unit4_inference
-    target_cards: 70
-    tags: [unit4, inference, exact, approximate]
-
-  "Unit_5.pdf":
-    unit_name: unit5_learning
-    target_cards: 60
-    tags: [unit5, learning, parameters, structure]
-
-  "Unit_6.pdf":
-    unit_name: unit6_temporal
-    target_cards: 60
-    tags: [unit6, temporal, dbn, hmm]
-
-  "Unit_7.pdf":
-    unit_name: unit7_advanced
-    target_cards: 50
-    tags: [unit7, advanced]
-
-  "Unit_8.pdf":
-    unit_name: unit8_applications
-    target_cards: 50
-    tags: [unit8, applications]
+# Optional: Override specific units (all others are auto-discovered)
+# units:
+#   "Intro.pdf":
+#     unit_name: unit0_intro
+#     target_cards: 30
+#     tags: [unit0, introduction, overview]
 
 card_distribution:
   conceptual: 0.40
@@ -89,7 +54,22 @@ card_distribution:
   pattern_recognition: 0.10
   visual: 0.10
 
-ollama:
+generation:
+  provider: "ollama"  # Options: "claude", "ollama"
+
+  claude:
+    model: "claude-sonnet-4-20250514"
+    api_key_env: "ANTHROPIC_API_KEY"
+    max_tokens: 16000
+
+  ollama:
+    base_url: "http://localhost:11434"
+    model: "ministral-3:14b"  # User can configure: ministral-3:8b, mistral, llama3, etc.
+    timeout: 120  # Longer timeout for larger model
+    max_retries: 3
+    temperature: 0.7
+
+ollama:  # For image descriptions only
   enabled: true
   base_url: http://localhost:11434
   model: ministral-3:8b

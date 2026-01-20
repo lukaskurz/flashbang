@@ -122,8 +122,12 @@ hr#answer {
 
 # Use a stable model ID so all decks share the same note type
 # This allows cards from different decks to be recognized as the same type
-PGM_MODEL_ID = 1894532617
+DEFAULT_MODEL_ID = 1894532617
 
 
-# Define the default model for Probabilistic Graphical Models cards (backward compatibility)
-PGM_MODEL = create_model('Probabilistic Graphical Models', PGM_MODEL_ID)
+# Define the default model for flashcards (backward compatibility)
+DEFAULT_MODEL = create_model('Anki Flashcards', DEFAULT_MODEL_ID)
+
+# Legacy alias for backward compatibility
+PGM_MODEL_ID = DEFAULT_MODEL_ID
+PGM_MODEL = DEFAULT_MODEL

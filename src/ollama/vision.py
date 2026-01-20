@@ -213,7 +213,7 @@ def extract_type_from_description(description: str) -> str:
 
     # Check for specific types
     type_keywords = {
-        'network': ['bayesian network', 'network diagram', 'network structure'],
+        'network': ['network', 'network diagram', 'network structure'],
         'algorithm': ['algorithm', 'flowchart', 'flow chart', 'pseudocode'],
         'formula': ['formula', 'equation', 'mathematical expression'],
         'table': ['table', 'comparison table', 'matrix'],

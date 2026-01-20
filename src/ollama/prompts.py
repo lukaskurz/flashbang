@@ -14,7 +14,7 @@ def get_image_description_prompt(
     Args:
         page_number: Optional page number where image appears
         page_context: Optional text content from the page for context
-        subject_context: Subject/course context (e.g., "Machine Learning lecture")
+        subject_context: Subject/course context (e.g., "Course lecture materials")
 
     Returns:
         Formatted prompt string
@@ -46,7 +46,7 @@ def get_detailed_description_prompt(subject_context: str = "lecture slides") -> 
     Get prompt for more detailed image analysis.
 
     Args:
-        subject_context: Subject/course context (e.g., "Machine Learning lecture")
+        subject_context: Subject/course context (e.g., "Course lecture materials")
 
     Returns:
         Detailed prompt string
@@ -92,7 +92,7 @@ def get_custom_prompt(
     Create a custom prompt with specific focus.
 
     Args:
-        focus: What to focus on (e.g., "Bayesian networks", "algorithm steps")
+        focus: What to focus on (e.g., "key concepts", "algorithm steps")
         word_count: Target word count
         include_math: Whether to request mathematical details
 

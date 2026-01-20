@@ -59,10 +59,19 @@ def list_command(detailed=False, stats=False):
     for idx, (pdf_filename, unit_info) in enumerate(all_units.items(), 1):
         unit_name = unit_info['unit_name']
         target_cards = unit_info.get('target_cards', 50)
+        source = unit_info.get('source', 'configured')
+
+        # Add source indicator to unit name
+        if source == 'auto-discovered':
+            unit_name_display = f"{unit_name} [dim](auto)[/dim]"
+        elif source == 'configured-only':
+            unit_name_display = f"{unit_name} [yellow](config only - PDF missing)[/yellow]"
+        else:
+            unit_name_display = unit_name
 
         row = [
             str(idx),
-            unit_name,
+            unit_name_display,
             pdf_filename,
             str(target_cards)
         ]

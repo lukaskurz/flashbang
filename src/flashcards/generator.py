@@ -9,11 +9,12 @@ from typing import List, Dict, Optional
 import anthropic
 import os
 from src.config import Config
+from src.flashcards.base import CardGenerationProvider
 
 logger = logging.getLogger(__name__)
 
 
-class FlashcardGenerator:
+class ClaudeCardGenerator(CardGenerationProvider):
     """Generate Anki flashcards from markdown content using Claude."""
 
     def __init__(self, config: Config = None, api_key: Optional[str] = None):
@@ -22,15 +23,35 @@ class FlashcardGenerator:
 
         Args:
             config: Configuration object (uses default config if not provided)
-            api_key: Optional Anthropic API key (uses ANTHROPIC_API_KEY env var if not provided)
+            api_key: Optional Anthropic API key (uses env var from config if not provided)
         """
-        self.config = config or Config()
-        self.api_key = api_key or os.getenv('ANTHROPIC_API_KEY')
+        # Initialize with config
+        if config is None:
+            config = Config()
+        super().__init__(config)
+
+        # Get API key from env var specified in config
+        api_key_env = self.config.claude_api_key_env
+        self.api_key = api_key or os.getenv(api_key_env)
+
         if not self.api_key:
-            raise ValueError("ANTHROPIC_API_KEY not found in environment")
+            raise ValueError(f"{api_key_env} not found in environment")
 
         self.client = anthropic.Anthropic(api_key=self.api_key)
-        self.model = "claude-sonnet-4-20250514"
+        self.model = self.config.claude_model
+        self.max_tokens = self.config.claude_max_tokens
+
+    def check_availability(self) -> bool:
+        """Check if Claude API is available."""
+        return self.api_key is not None
+
+    def get_provider_info(self) -> Dict[str, str]:
+        """Get Claude provider info."""
+        return {
+            'provider': 'claude',
+            'model': self.model,
+            'max_tokens': str(self.max_tokens)
+        }
 
     def load_markdown(self, unit_name: str) -> str:
         """Load markdown content for a unit."""
@@ -75,7 +96,7 @@ class FlashcardGenerator:
         Generate Anki flashcards for a unit.
 
         Args:
-            unit_name: Unit name (e.g., 'unit3_bayesian_networks')
+            unit_name: Unit name (e.g., 'unit3_core_topics')
             target_cards: Target number of flashcards to generate
             output_dir: Output directory for .txt file
 
@@ -100,7 +121,7 @@ class FlashcardGenerator:
 
         response = self.client.messages.create(
             model=self.model,
-            max_tokens=16000,
+            max_tokens=self.max_tokens,
             messages=[{
                 "role": "user",
                 "content": prompt
@@ -193,7 +214,7 @@ Front	Back	Tags
 Each flashcard row should have:
 - **Front**: The question (use <br> for line breaks, not \\n)
 - **Back**: The answer with explanation (use <br> for line breaks, not \\n)
-- **Tags**: Space-separated tags (e.g., "bayesian-networks inference")
+- **Tags**: Space-separated tags (e.g., "core-topics methods")
 
 # Formatting Guidelines
 
@@ -301,16 +322,16 @@ def generate_all_units(target_cards_per_unit: Dict[str, int] = None, config: Con
         target_cards_per_unit = {
             'unit0_intro': 30,
             'unit1_fundamentals': 50,
-            'unit2_concepts': 50,
-            'unit3_bayesian_networks': 60,
-            'unit4_inference': 60,
-            'unit5_learning': 50,
-            'unit6_temporal': 60,
-            'unit7_advanced': 50,
-            'unit8_applications': 60
+            'unit2_concepts': 60,
+            'unit3_core_topics': 70,
+            'unit4_methods': 70,
+            'unit5_techniques': 60,
+            'unit6_advanced_topics': 60,
+            'unit7_special_topics': 50,
+            'unit8_applications': 50
         }
 
-    generator = FlashcardGenerator(config=config)
+    generator = ClaudeCardGenerator(config=config)
 
     for unit_name, target_cards in target_cards_per_unit.items():
         try:
@@ -330,6 +351,10 @@ def generate_all_units(target_cards_per_unit: Dict[str, int] = None, config: Con
         except Exception as e:
             logger.error(f"Failed to generate flashcards for {unit_name}: {e}")
             print(f"\n{unit_name}: FAILED - {e}")
+
+
+# Backward compatibility alias
+FlashcardGenerator = ClaudeCardGenerator
 
 
 if __name__ == "__main__":

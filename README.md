@@ -49,14 +49,15 @@ export ANTHROPIC_API_KEY='your-api-key-here'
 # 1. Place PDFs in pdfs/ directory
 cp ~/my-lectures/*.pdf pdfs/
 
-# 2. Edit config.yaml to define your units
+# 2. (Optional) Edit config.yaml to customize units
+# Units are auto-discovered, but you can override settings if needed
 vim config.yaml
 
 # 3. Extract PDFs to markdown and images
 anki-gen extract --all
 
 # 4. Generate flashcards (uses Claude API)
-anki-gen generate --unit unit1_introduction
+anki-gen generate --unit unit_intro  # Use auto-generated unit name
 
 # 5. Package into .apkg files
 anki-gen package --all
@@ -96,19 +97,76 @@ prompts:
 
 ### Unit Configuration
 
-Define your course units:
+#### Auto-Discovery (Recommended)
+
+Simply place PDFs in the `pdfs/` directory and they will be auto-discovered:
+
+```bash
+pdfs/
+├── Intro.pdf
+├── Unit_1.pdf
+├── Unit_2.pdf
+└── Unit_3.pdf
+```
+
+Units are auto-configured with:
+- **unit_name**: Generated from filename (e.g., `Unit_1.pdf` → `unit_1`)
+- **target_cards**: 50 (or set `defaults.target_cards` in config.yaml)
+- **tags**: [`unit_name`]
 
 ```yaml
-units:
-  "lecture1.pdf":
-    unit_name: unit1_introduction
-    target_cards: 50
-    tags: [unit1, introduction]
+# Optional: Set defaults for all auto-discovered units
+defaults:
+  target_cards: 50  # Default number of cards per unit
+```
 
-  "lecture2.pdf":
-    unit_name: unit2_foundations
-    target_cards: 60
-    tags: [unit2, foundations]
+#### Custom Configuration (Optional)
+
+Override specific units in `config.yaml`:
+
+```yaml
+defaults:
+  target_cards: 50  # Default for all units
+
+units:
+  # Only configure units that need custom settings
+  "Intro.pdf":
+    unit_name: unit0_intro  # Custom name
+    target_cards: 30        # Custom target
+    tags: [unit0, introduction, overview]
+
+  "Unit_1.pdf":
+    target_cards: 60  # Override just target_cards, keep auto-generated name
+```
+
+#### Migration from Old Config
+
+**Before (all hardcoded)**:
+```yaml
+units:
+  "Intro.pdf":
+    unit_name: unit0_intro
+    target_cards: 30
+    tags: [unit0, introduction]
+  "Unit_1.pdf":
+    unit_name: unit1_fundamentals
+    target_cards: 50
+    tags: [unit1, fundamentals]
+  # ... 20 more units
+```
+
+**After (auto-discovery)**:
+```yaml
+defaults:
+  target_cards: 50
+
+units:
+  # Only override special cases
+  "Intro.pdf":
+    unit_name: unit0_intro
+    target_cards: 30
+    tags: [unit0, introduction]
+  # All other units auto-discovered!
 ```
 
 ### Card Distribution
@@ -123,6 +181,66 @@ card_distribution:
   pattern_recognition: 0.10 # Recognize patterns
   visual: 0.10             # Image-based cards
 ```
+
+### Card Generation Providers
+
+Choose between Claude API or local Ollama for flashcard generation:
+
+```yaml
+generation:
+  provider: "claude"  # Options: "claude", "ollama"
+
+  claude:
+    model: "claude-sonnet-4-20250514"
+    api_key_env: "ANTHROPIC_API_KEY"
+    max_tokens: 16000
+
+  ollama:
+    base_url: "http://localhost:11434"
+    model: "ministral-3:14b"  # User can configure: ministral-3:8b, mistral, llama3, etc.
+    timeout: 120
+    max_retries: 3
+    temperature: 0.7
+```
+
+**Claude (Default)**
+- **Pros**: High quality, excellent instruction following, best for complex subjects
+- **Cons**: API costs (~$0.10-0.30 per unit)
+
+```bash
+# Set API key
+export ANTHROPIC_API_KEY='your-key'
+
+# Generate
+anki-gen generate --unit unit1_intro
+```
+
+**Ollama (Local, Free)**
+- **Pros**: Free, local, privacy-focused, no API limits
+- **Cons**: Requires local setup, may need prompt tuning, variable quality
+
+```bash
+# 1. Install Ollama (ollama.ai)
+# 2. Pull model
+ollama pull ministral-3:14b
+
+# 3. Configure config.yaml
+# Set generation.provider: "ollama"
+
+# 4. Generate
+anki-gen generate --unit unit1_intro
+```
+
+**Override Provider Per-Command**
+```bash
+# Use Ollama for this run only
+anki-gen generate --unit unit1 --provider ollama
+
+# Use Claude for this run only
+anki-gen generate --unit unit1 --provider claude
+```
+
+For detailed Ollama setup and configuration, see [docs/OLLAMA_GUIDE.md](docs/OLLAMA_GUIDE.md).
 
 ## CLI Commands
 
@@ -143,14 +261,15 @@ anki-gen extract --all --no-images  # Skip image extraction
 ```
 
 ### `anki-gen generate`
-Generate flashcards using Claude API.
+Generate flashcards using Claude API or Ollama.
 
 ```bash
 anki-gen generate --unit unit1_introduction
 anki-gen generate --unit unit2 --show-images
+anki-gen generate --unit unit3 --provider ollama  # Use Ollama instead of Claude
 ```
 
-**Note**: This command uses the Claude API and requires an API key.
+**Note**: Default provider is Claude (requires API key). To use Ollama, either set `generation.provider: "ollama"` in config.yaml or use `--provider ollama` flag.
 
 ### `anki-gen package`
 Package flashcards into .apkg files.
@@ -271,13 +390,16 @@ Use as a Python library:
 
 ```python
 from src.config import Config
-from src.flashcards.generator import FlashcardGenerator
+from src.flashcards.factory import create_card_generator
 
 # Load configuration
 config = Config('config.yaml')
 
-# Create generator
-generator = FlashcardGenerator(config=config)
+# Create generator (uses configured provider)
+generator = create_card_generator(config)
+
+# Or override provider
+generator = create_card_generator(config, provider='ollama')
 
 # Generate flashcards
 output_path = generator.generate_flashcards(
@@ -288,6 +410,19 @@ output_path = generator.generate_flashcards(
 # Validate output
 validation = generator.validate_output(output_path)
 print(f"Generated {validation['card_count']} cards")
+```
+
+For direct provider access:
+
+```python
+from src.flashcards.generator import ClaudeCardGenerator
+from src.flashcards.ollama_generator import OllamaCardGenerator
+
+# Use Claude directly
+claude_gen = ClaudeCardGenerator(config=config)
+
+# Use Ollama directly
+ollama_gen = OllamaCardGenerator(config=config)
 ```
 
 ### Custom Card Types

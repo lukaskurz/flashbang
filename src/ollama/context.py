@@ -15,7 +15,7 @@ def extract_page_text(unit_name: str, page_number: int, max_chars: int = 500) ->
     Extract text content from a specific page in the markdown file.
 
     Args:
-        unit_name: Unit name (e.g., 'unit3_bayesian_networks')
+        unit_name: Unit name (e.g., 'unit3_core_topics')
         page_number: Page number to extract
         max_chars: Maximum characters to return (default 500)
 

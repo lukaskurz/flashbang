@@ -52,10 +52,12 @@ def extract(unit, no_images, no_describe):
 @cli.command()
 @click.option('--unit', '-u', required=True, help='Unit to generate flashcards for')
 @click.option('--show-images', is_flag=True, help='Display image descriptions in output')
-def generate(unit, show_images):
-    """Generate flashcards from markdown using Claude."""
+@click.option('--provider', '-p', type=click.Choice(['claude', 'ollama']),
+              help='Override card generation provider (uses config default if not specified)')
+def generate(unit, show_images, provider):
+    """Generate flashcards from markdown using Claude or Ollama."""
     from src.cli.generate import generate_command
-    generate_command(unit, show_images)
+    generate_command(unit, show_images, provider)
 
 
 @cli.command()

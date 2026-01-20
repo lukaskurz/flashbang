@@ -3,8 +3,10 @@ Configuration management for PDF to Anki flashcard generation.
 """
 
 import os
+import re
 import yaml
 import logging
+from pathlib import Path
 from typing import Dict, Any, Optional, List
 
 
@@ -50,7 +52,8 @@ class Config:
         Raises:
             ValueError: If required fields are missing
         """
-        required_sections = ['processing', 'output', 'units']
+        # Required sections (units is now optional due to auto-discovery)
+        required_sections = ['processing', 'output']
         for section in required_sections:
             if section not in config:
                 raise ValueError(f"Missing required configuration section: {section}")
@@ -60,11 +63,73 @@ class Config:
             if dir_key not in config['output']:
                 raise ValueError(f"Missing output directory configuration: {dir_key}")
 
-        # Validate units
-        if not config['units']:
-            raise ValueError("No units configured")
+        # Check if we have either configured units OR PDFs in directory
+        configured_units = config.get('units', {})
+        discovered_pdfs = self.discover_pdfs()
+
+        if not configured_units and not discovered_pdfs:
+            raise ValueError(
+                "No units configured and no PDFs found in pdfs/ directory. "
+                "Either add PDFs to pdfs/ or configure units in config.yaml"
+            )
 
         self.logger.info("Configuration validation passed")
+
+    def discover_pdfs(self, pdfs_dir: str = "pdfs") -> List[str]:
+        """
+        Discover PDF files in directory.
+
+        Args:
+            pdfs_dir: Directory containing PDF files
+
+        Returns:
+            List of PDF filenames (sorted)
+        """
+        pdfs_path = Path(pdfs_dir)
+        if not pdfs_path.exists():
+            self.logger.warning(f"PDFs directory not found: {pdfs_dir}")
+            return []
+
+        pdf_files = sorted([f.name for f in pdfs_path.glob("*.pdf")])
+        self.logger.debug(f"Discovered {len(pdf_files)} PDF files in {pdfs_dir}")
+        return pdf_files
+
+    def generate_unit_name(self, pdf_filename: str) -> str:
+        """
+        Generate default unit name from PDF filename.
+
+        Examples:
+            "Intro.pdf" → "unit_intro"
+            "Unit_1.pdf" → "unit_1"
+            "lecture 3.pdf" → "unit_lecture_3"
+            "Unit 1.pdf" → "unit_1"
+
+        Args:
+            pdf_filename: PDF filename (e.g., "Unit_1.pdf")
+
+        Returns:
+            Generated unit name (e.g., "unit_1")
+        """
+        # Remove .pdf extension
+        name = pdf_filename.replace('.pdf', '').replace('.PDF', '')
+
+        # Convert to lowercase
+        name = name.lower()
+
+        # Replace spaces, hyphens, dots with underscores
+        name = re.sub(r'[\s\-\.]+', '_', name)
+
+        # Remove any non-alphanumeric characters except underscores
+        name = re.sub(r'[^\w]', '', name)
+
+        # Remove leading/trailing underscores
+        name = name.strip('_')
+
+        # Prepend unit_ if not already present
+        if not name.startswith('unit'):
+            name = f'unit_{name}'
+
+        return name
 
     def get(self, key: str, default: Any = None) -> Any:
         """
@@ -103,12 +168,54 @@ class Config:
 
     def get_all_units(self) -> Dict[str, Dict[str, Any]]:
         """
-        Get all unit configurations.
+        Get all unit configurations (auto-discovered + configured).
+
+        Auto-discovers PDFs from pdfs/ directory and merges with explicit
+        configuration. Configured values take precedence over auto-discovered.
 
         Returns:
-            Dictionary mapping PDF filenames to unit configurations
+            Dictionary mapping PDF filenames to unit configurations.
+            Each unit dict includes:
+                - unit_name: str
+                - target_cards: int
+                - tags: List[str]
+                - source: str ('auto-discovered', 'configured', or 'configured-only')
         """
-        return self.config.get('units', {})
+        # Get default target cards
+        default_target_cards = self.default_target_cards
+
+        # Discover PDFs
+        discovered_pdfs = self.discover_pdfs()
+        units = {}
+
+        # Create entries for auto-discovered PDFs
+        for pdf_file in discovered_pdfs:
+            unit_name = self.generate_unit_name(pdf_file)
+            units[pdf_file] = {
+                'unit_name': unit_name,
+                'target_cards': default_target_cards,
+                'tags': [unit_name],
+                'source': 'auto-discovered'
+            }
+
+        # Merge with explicit configuration (configured values take precedence)
+        configured_units = self.config.get('units', {})
+        for pdf_file, overrides in configured_units.items():
+            if pdf_file in units:
+                # Update discovered unit with configured values
+                units[pdf_file].update(overrides)
+                units[pdf_file]['source'] = 'configured'
+            else:
+                # PDF in config but not found in directory
+                # Still include it for backward compatibility
+                units[pdf_file] = overrides.copy()
+                units[pdf_file]['source'] = 'configured-only'
+                if pdf_file not in discovered_pdfs:
+                    self.logger.warning(
+                        f"PDF '{pdf_file}' is configured but not found in pdfs/ directory"
+                    )
+
+        return units
 
     def get_unit_by_name(self, unit_name: str) -> Optional[Dict[str, Any]]:
         """
@@ -125,6 +232,11 @@ class Config:
             if unit_info.get('unit_name') == unit_name:
                 return unit_info
         return None
+
+    @property
+    def default_target_cards(self) -> int:
+        """Get default target cards for auto-discovered units."""
+        return self.get('defaults.target_cards', 50)
 
     @property
     def extract_images(self) -> bool:
@@ -192,6 +304,51 @@ class Config:
     def subject_description(self) -> str:
         """Get subject description."""
         return self.get('subject.description', 'Educational materials')
+
+    @property
+    def generation_provider(self) -> str:
+        """Get card generation provider (claude or ollama)."""
+        return self.get('generation.provider', 'claude')
+
+    @property
+    def claude_model(self) -> str:
+        """Get Claude model name."""
+        return self.get('generation.claude.model', 'claude-sonnet-4-20250514')
+
+    @property
+    def claude_api_key_env(self) -> str:
+        """Get Claude API key environment variable name."""
+        return self.get('generation.claude.api_key_env', 'ANTHROPIC_API_KEY')
+
+    @property
+    def claude_max_tokens(self) -> int:
+        """Get Claude max tokens."""
+        return self.get('generation.claude.max_tokens', 16000)
+
+    @property
+    def ollama_generation_base_url(self) -> str:
+        """Get Ollama base URL for card generation."""
+        return self.get('generation.ollama.base_url', 'http://localhost:11434')
+
+    @property
+    def ollama_generation_model(self) -> str:
+        """Get Ollama model for card generation."""
+        return self.get('generation.ollama.model', 'ministral-3:14b')
+
+    @property
+    def ollama_generation_timeout(self) -> int:
+        """Get Ollama timeout for card generation."""
+        return self.get('generation.ollama.timeout', 120)
+
+    @property
+    def ollama_generation_max_retries(self) -> int:
+        """Get Ollama max retries for card generation."""
+        return self.get('generation.ollama.max_retries', 3)
+
+    @property
+    def ollama_generation_temperature(self) -> float:
+        """Get Ollama temperature for card generation."""
+        return self.get('generation.ollama.temperature', 0.7)
 
     def get_prompt_template(self, template_name: str) -> str:
         """

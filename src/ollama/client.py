@@ -150,6 +150,65 @@ class OllamaClient:
 
         return None
 
+    def generate_text(
+        self,
+        prompt: str,
+        system: Optional[str] = None,
+        temperature: float = 0.7
+    ) -> Optional[str]:
+        """
+        Generate text from prompt using Ollama.
+
+        Args:
+            prompt: Text prompt
+            system: Optional system message
+            temperature: Sampling temperature
+
+        Returns:
+            Generated text or None if failed
+        """
+        if not self.check_availability():
+            logger.warning("Ollama not available")
+            return None
+
+        payload = {
+            "model": self.model,
+            "prompt": prompt,
+            "stream": False,
+            "options": {
+                "temperature": temperature
+            }
+        }
+
+        if system:
+            payload["system"] = system
+
+        for attempt in range(self.max_retries):
+            try:
+                with httpx.Client(timeout=self.timeout) as client:
+                    response = client.post(
+                        f"{self.base_url}/api/generate",
+                        json=payload
+                    )
+                    response.raise_for_status()
+
+                    result = response.json()
+                    return result.get("response", "")
+
+            except httpx.TimeoutException:
+                if attempt < self.max_retries - 1:
+                    wait_time = 2 ** attempt
+                    logger.warning(f"Timeout, retrying in {wait_time}s...")
+                    time.sleep(wait_time)
+                else:
+                    logger.error("Max retries exceeded")
+                    return None
+            except Exception as e:
+                logger.error(f"Error generating text: {e}")
+                return None
+
+        return None
+
     def get_model_info(self) -> Optional[Dict[str, Any]]:
         """
         Get information about the current model.

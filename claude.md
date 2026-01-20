@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project automates the creation of Anki flashcard decks from lecture PDFs for a Machine Learning Advanced techniques course. The goal is to create high-quality flashcards that test conceptual understanding and algorithm comprehension, aligned with exam requirements.
+This project automates the creation of Anki flashcard decks from lecture PDFs for any academic course. The goal is to create high-quality flashcards that test conceptual understanding and algorithm comprehension, aligned with exam requirements.
 
 ## Input Structure
 
@@ -89,7 +89,7 @@ Based on exam requirements, cards should:
    - Diagrams showing structures/processes
 
 3. **Extract images**:
-   - Bayesian network diagrams
+   - Diagrams and network structures
    - Algorithm flowcharts
    - Example scenarios with graphs
    - Comparison tables as images
@@ -113,57 +113,25 @@ For images, use external file references:
 
 ## Content Guidelines per Unit
 
-### Unit 1: Introduction
-- Motivation for probabilistic models
-- Key applications
-- Three main challenges (representation, inference, learning)
-- Basic terminology
+### General Approach
 
-### Unit 2: Probability Theory
-- Conditional probability and Bayes' Rule
-- Independence vs conditional independence
-- Inference by enumeration
-- Chain rule
+For each unit, extract content that includes:
 
-### Unit 3: Bayesian Networks
-- Conditional independence semantics
-- Factorization and chain rule for BNs
-- Reasoning patterns (causal, evidential, explaining away)
-- Complexity reduction
-- Linear Gaussian models
+- **Core Concepts**: Fundamental ideas and definitions
+- **Key Principles**: Important rules, theorems, or relationships
+- **Methods and Techniques**: Algorithms, procedures, or approaches
+- **Applications**: Practical uses and examples
+- **Common Patterns**: Recurring themes or structures
 
-### Unit 4: Inference
-- Variable elimination algorithm
-- Forward sampling
-- Rejection sampling
-- Likelihood weighting
-- Gibbs sampling
+### Content to Prioritize
 
-### Unit 5: Learning
-- Maximum likelihood estimation
-- Bayesian parameter learning
-- Overfitting and regularization
-- BIC and MDL
-
-### Unit 6: Temporal Models
-- DBN representation
-- State-observation models
-- Filtering (forward algorithm)
-- Smoothing (forward-backward)
-- Prediction
-
-### Unit 7: Structure Learning
-- Constraint-based methods
-- Score-based methods
-- BIC scoring
-- Search algorithms
-
-### Unit 8: HMMs
-- HMM representation
-- Forward algorithm
-- Viterbi algorithm
-- Baum-Welch learning
-- Gaussian mixture models
+- Main topics covered in the unit
+- Important definitions and terminology
+- Key algorithms or procedures
+- Worked examples that illustrate concepts
+- Diagrams showing relationships or structures
+- Comparison tables showing differences between approaches
+- Common pitfalls or misconceptions to address
 
 ## Card Creation Process
 
@@ -174,29 +142,30 @@ For images, use external file references:
 3. **Create cards**: 3-5 cards per major concept = 50-80 cards per unit
 4. **Extract relevant images**: 5-10 diagrams per unit
 5. **Format properly**: Ensure MathJax, HTML, tabs
-6. **Tag appropriately**: Use hierarchical tags (e.g., `unit3 bayesian-networks v-structures`)
+6. **Tag appropriately**: Use hierarchical tags (e.g., `unit3 core-topics key-concept`)
 
 ### Example Card Creation Workflow:
 
 **Source Content (from PDF):**
 ```
-The forward algorithm computes P(S^(t) | o^(1:t)) recursively by:
-1. Propagating state distribution forward
-2. Conditioning on new observation
+The recursive algorithm computes solutions by:
+1. Breaking down into smaller subproblems
+2. Combining results from subproblems
+3. Storing intermediate results
 ```
 
 **Generated Card (Conceptual):**
 ```
-Front: How does the forward algorithm avoid recomputing the entire history at each time step?
-Back: It uses <strong>recursive computation</strong>:<br>1. Propagates forward: \(P(S^{(t+1)} \mid o^{(1:t)}) = \sum_{s^{(t)}} P(S^{(t+1)} \mid s^{(t)}) P(s^{(t)} \mid o^{(1:t)})\)<br>2. Updates with new observation: \(P(S^{(t+1)} \mid o^{(1:t+1)}) \propto P(o^{(t+1)} \mid S^{(t+1)}) \cdot P(S^{(t+1)} \mid o^{(1:t)})\)<br><br>Only needs the previous time step, not entire history!
-Tags: hmm forward-algorithm inference
+Front: Why is this recursive algorithm more efficient than solving the problem directly?
+Back: It uses <strong>dynamic programming</strong>:<br>1. Breaks complex problem into simpler subproblems<br>2. Stores intermediate results to avoid redundant calculations<br>3. Combines solutions systematically<br><br>Only needs to solve each subproblem once!
+Tags: algorithms recursion optimization
 ```
 
 **Generated Card (Visual - IMAGE IN FRONT):**
 ```
-Front: <img src="bayesian_network_example.png" style="max-width:500px;"><br>What independence relationships are shown in this Bayesian network?
-Back: The network shows:<br>1. <strong>A and B are marginally independent</strong><br>2. <strong>A and B become dependent given C</strong> (explaining away)<br>3. C is conditionally independent of other variables given its parents
-Tags: bayesian-networks independence v-structures
+Front: <img src="diagram_example.png" style="max-width:500px;"><br>What relationships are shown in this diagram?
+Back: The diagram shows:<br>1. <strong>Components A and B interact through interface C</strong><br>2. <strong>Information flows from top to bottom</strong><br>3. Each component has distinct responsibilities and dependencies
+Tags: concepts structure relationships
 ```
 
 ## Quality Checklist
@@ -223,14 +192,15 @@ Before generating each deck, ensure:
 ## Output Deliverables
 
 Generate one file per unit:
-- `unit1_introduction_anki.txt` (40-60 cards)
-- `unit2_probability_anki.txt` (50-70 cards)
-- `unit3_bayesian_networks_anki.txt` (60-80 cards)
-- `unit4_inference_anki.txt` (60-80 cards)
-- `unit5_learning_anki.txt` (50-70 cards)
-- `unit6_temporal_models_anki.txt` (60-80 cards)
-- `unit7_structure_learning_anki.txt` (40-60 cards)
-- `unit8_hmms_anki.txt` (60-80 cards)
+- `unit0_intro_anki.txt` (30-50 cards)
+- `unit1_fundamentals_anki.txt` (40-60 cards)
+- `unit2_concepts_anki.txt` (50-70 cards)
+- `unit3_core_topics_anki.txt` (60-80 cards)
+- `unit4_methods_anki.txt` (60-80 cards)
+- `unit5_techniques_anki.txt` (50-70 cards)
+- `unit6_advanced_topics_anki.txt` (60-80 cards)
+- `unit7_special_topics_anki.txt` (40-60 cards)
+- `unit8_applications_anki.txt` (50-70 cards)
 
 Plus extracted images in `outputs/images/` folder.
 
