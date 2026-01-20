@@ -172,24 +172,47 @@ def _generate_single_unit(config, unit_name: str, show_images: bool = False, pro
             # Count complete lines
             progress_state['lines_generated'] = progress_state['buffer'].count('\n')
 
-        with Live(create_progress_display(), console=console, refresh_per_second=4) as live:
-            def update_callback(chunk: str):
-                progress_callback(chunk)
-                live.update(create_progress_display())
+        interrupted = False
+        # Construct output path early so we can check it if interrupted
+        output_path = f"{config.anki_dir}/{unit_name}_anki.txt"
 
-            output_path = generator.generate_flashcards(
-                unit_name=unit_name,
-                target_cards=target_cards,
-                output_dir=config.anki_dir,
-                progress_callback=update_callback
-            )
+        try:
+            with Live(create_progress_display(), console=console, refresh_per_second=4) as live:
+                def update_callback(chunk: str):
+                    progress_callback(chunk)
+                    live.update(create_progress_display())
+
+                output_path = generator.generate_flashcards(
+                    unit_name=unit_name,
+                    target_cards=target_cards,
+                    output_dir=config.anki_dir,
+                    progress_callback=update_callback
+                )
+        except KeyboardInterrupt:
+            interrupted = True
+            console.print("\n[yellow]⚠ Generation interrupted by user[/yellow]")
+
+            # Check if partial results were saved
+            if os.path.exists(output_path):
+                console.print("[cyan]Partial results saved, validating...[/cyan]")
+            else:
+                # No output file yet, give up
+                console.print("[red]✗ No cards generated before interruption[/red]")
+                return False
+
+        if not output_path:
+            console.print("[red]✗ No output generated[/red]")
+            return False
 
         # Validate output
         validation = generator.validate_output(output_path)
 
         # Display results
         console.print()
-        if validation['valid']:
+        if interrupted:
+            console.print(f"[yellow]⚠ Partial generation - {validation['card_count']} cards saved[/yellow]")
+            console.print(f"[cyan]→ Saved to {output_path}[/cyan]")
+        elif validation['valid']:
             console.print(f"[green]✓ Generated {validation['card_count']} cards[/green]")
             console.print(f"[green]✓ Saved to {output_path}[/green]")
         else:

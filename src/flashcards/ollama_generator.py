@@ -9,6 +9,7 @@ from typing import List, Dict, Any, Optional, Callable
 from src.config import Config
 from src.flashcards.base import CardGenerationProvider
 from src.ollama.client import OllamaClient
+from src.pdf_processor import PDFProcessor
 
 logger = logging.getLogger(__name__)
 
@@ -81,6 +82,46 @@ class OllamaCardGenerator(CardGenerationProvider):
                 })
 
         return unit_images
+
+    def get_pdf_page_count(self, unit_name: str) -> int:
+        """
+        Get the page count for a unit's PDF.
+
+        Args:
+            unit_name: Unit name (e.g., 'unit_2')
+
+        Returns:
+            Number of pages in the PDF, or 0 if PDF not found
+        """
+        # Find the PDF file for this unit
+        units = self.config.get_all_units()
+        pdf_file = None
+
+        for pdf_filename, unit_info in units.items():
+            if unit_info.get('unit_name') == unit_name:
+                pdf_file = pdf_filename
+                break
+
+        if not pdf_file:
+            logger.warning(f"No PDF found for unit: {unit_name}")
+            return 0
+
+        # Get the PDF path
+        pdf_path = Path('pdfs') / pdf_file
+
+        if not pdf_path.exists():
+            logger.warning(f"PDF file not found: {pdf_path}")
+            return 0
+
+        # Get page count using PDFProcessor
+        try:
+            with PDFProcessor(str(pdf_path), unit_name) as processor:
+                page_count = processor.get_page_count()
+                logger.info(f"PDF {pdf_file} has {page_count} pages")
+                return page_count
+        except Exception as e:
+            logger.error(f"Failed to get page count for {pdf_file}: {e}")
+            return 0
 
     def _format_quality_guidelines(self) -> str:
         """Format card quality guidelines from config."""
@@ -217,38 +258,128 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
         markdown_content = self.load_markdown(unit_name)
         images = self.load_image_metadata(unit_name)
 
+        # Calculate dynamic limit based on page count
+        page_count = self.get_pdf_page_count(unit_name)
+        max_cards_from_pages = int(page_count * 1.5) if page_count > 0 else target_cards
+        effective_target = min(target_cards, max_cards_from_pages)
+
+        logger.info(
+            f"PDF has {page_count} pages. "
+            f"Max cards from pages: {max_cards_from_pages}. "
+            f"Effective target: {effective_target} (requested: {target_cards})"
+        )
+
         # Create prompt
         prompt = self._create_generation_prompt(
             markdown_content,
             images,
-            target_cards
+            effective_target
         )
 
         # Generate using Ollama
-        logger.info(f"Calling Ollama ({self.client.model}) to generate ~{target_cards} flashcards...")
+        logger.info(f"Calling Ollama ({self.client.model}) to generate ~{effective_target} flashcards...")
+
+        # Create a wrapper callback that stops generation when target is reached
+        accumulated_content = []
+        card_count = [0]  # Use list to allow modification in nested function
+
+        def counting_callback(chunk: str) -> None:
+            """Callback that counts cards and stops at target."""
+            accumulated_content.append(chunk)
+            full_text = ''.join(accumulated_content)
+
+            # Count lines that look like flashcards (contain tabs)
+            lines = full_text.split('\n')
+            card_count[0] = sum(1 for line in lines if line.count('\t') >= 2)
+
+            # Call the original callback for progress updates
+            if progress_callback:
+                progress_callback(chunk)
 
         # Use streaming if callback provided
         use_streaming = progress_callback is not None
 
-        flashcard_content = self.client.generate_text(
-            prompt=prompt,
-            temperature=self.temperature,
-            stream=use_streaming,
-            progress_callback=progress_callback
-        )
+        # Prepare output path
+        output_path = Path(output_dir) / f"{unit_name}_anki.txt"
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        flashcard_content = None
+        interrupted = False
+
+        try:
+            flashcard_content = self.client.generate_text(
+                prompt=prompt,
+                temperature=self.temperature,
+                stream=use_streaming,
+                progress_callback=counting_callback if use_streaming else None
+            )
+        except KeyboardInterrupt:
+            interrupted = True
+            logger.info("Generation interrupted by user")
+
+            # Use accumulated content if available (streaming mode)
+            if accumulated_content:
+                flashcard_content = ''.join(accumulated_content)
+                logger.info(f"Saving {card_count[0]} partially generated cards...")
+            else:
+                logger.warning("No content generated before interruption")
+                raise
 
         if not flashcard_content:
             raise RuntimeError("Ollama failed to generate flashcards")
 
-        # Save to file
-        output_path = Path(output_dir) / f"{unit_name}_anki.txt"
-        output_path.parent.mkdir(parents=True, exist_ok=True)
+        # Truncate to effective_target cards if we exceeded it
+        flashcard_content = self._truncate_to_target(flashcard_content, effective_target)
 
+        # Save to file
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(flashcard_content)
 
-        logger.info(f"Saved flashcards to {output_path}")
+        if interrupted:
+            logger.info(f"Saved partial results to {output_path}")
+        else:
+            logger.info(f"Saved flashcards to {output_path}")
+
         return str(output_path)
+
+    def _truncate_to_target(self, content: str, target_cards: int) -> str:
+        """
+        Truncate flashcard content to target number of cards.
+
+        Args:
+            content: Full flashcard content
+            target_cards: Maximum number of cards to keep
+
+        Returns:
+            Truncated content with exactly target_cards or fewer
+        """
+        lines = content.split('\n')
+
+        # Find header lines (first 4 lines)
+        header_lines = []
+        card_lines = []
+        in_headers = True
+
+        for line in lines:
+            if in_headers:
+                header_lines.append(line)
+                # After "Front\tBack\tTags" line, we're done with headers
+                if line.startswith('Front\tBack\tTags'):
+                    in_headers = False
+            else:
+                # Only count lines with proper tab separation as cards
+                if line.strip() and line.count('\t') >= 2:
+                    card_lines.append(line)
+
+        # Truncate to target
+        if len(card_lines) > target_cards:
+            logger.info(f"Truncating from {len(card_lines)} cards to {target_cards}")
+            card_lines = card_lines[:target_cards]
+        else:
+            logger.info(f"Generated {len(card_lines)} cards (target: {target_cards})")
+
+        # Reconstruct content
+        return '\n'.join(header_lines + card_lines) + '\n'
 
     def validate_output(self, output_path: str) -> Dict[str, Any]:
         """
