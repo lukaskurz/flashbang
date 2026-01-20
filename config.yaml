@@ -1,0 +1,99 @@
+subject:
+  name: "Probabilistic Graphical Models"
+  short_name: "PGM"
+  field: "Machine Learning"
+  description: "Advanced techniques in probabilistic modeling and inference"
+
+prompts:
+  system_context: |
+    You are generating flashcards for a {field} course on {name}.
+    Focus on {description}.
+
+  card_quality_focus:
+    - "Test understanding, not memorization"
+    - "Use concrete examples"
+    - "Keep calculations simple"
+    - "Focus on concepts and intuition"
+
+  example_cards:
+    - front: "Why does the forward algorithm avoid recomputing the entire history at each time step?"
+      back: "It uses <strong>recursive computation</strong>:<br>1. Propagates forward: \\(P(S^{(t+1)} \\mid o^{(1:t)}) = \\sum_{s^{(t)}} P(S^{(t+1)} \\mid s^{(t)}) P(s^{(t)} \\mid o^{(1:t)})\\)<br>2. Updates with new observation: \\(P(S^{(t+1)} \\mid o^{(1:t+1)}) \\propto P(o^{(t+1)} \\mid S^{(t+1)}) \\cdot P(S^{(t+1)} \\mid o^{(1:t)})\\)<br><br>Only needs the previous time step, not entire history!"
+      tags: "hmm forward-algorithm inference"
+
+    - front: "What independence relationships exist in a v-structure (A → C ← B)?"
+      back: "1. <strong>A and B are marginally independent</strong><br>2. <strong>A and B become dependent given C</strong> (explaining away)<br>3. Observing C creates a dependency between its causes"
+      tags: "bayesian-networks independence v-structures"
+
+processing:
+  extract_images: true
+  min_image_size: [100, 100]  # width, height in pixels
+  image_format: png
+  image_quality: 95
+
+output:
+  markdown_dir: outputs/markdown
+  images_dir: outputs/images
+  anki_dir: outputs/anki
+  apkg_dir: outputs/apkg
+
+units:
+  "Intro.pdf":
+    unit_name: unit0_intro
+    target_cards: 30
+    tags: [unit0, introduction, overview]
+
+  "Unit_1.pdf":
+    unit_name: unit1_fundamentals
+    target_cards: 50
+    tags: [unit1, fundamentals, probability]
+
+  "Unit_2.pdf":
+    unit_name: unit2_concepts
+    target_cards: 60
+    tags: [unit2, concepts, notation]
+
+  "Unit_3.pdf":
+    unit_name: unit3_bayesian_networks
+    target_cards: 70
+    tags: [unit3, bayesian-networks, representation]
+
+  "Unit_4.pdf":
+    unit_name: unit4_inference
+    target_cards: 70
+    tags: [unit4, inference, exact, approximate]
+
+  "Unit_5.pdf":
+    unit_name: unit5_learning
+    target_cards: 60
+    tags: [unit5, learning, parameters, structure]
+
+  "Unit_6.pdf":
+    unit_name: unit6_temporal
+    target_cards: 60
+    tags: [unit6, temporal, dbn, hmm]
+
+  "Unit_7.pdf":
+    unit_name: unit7_advanced
+    target_cards: 50
+    tags: [unit7, advanced]
+
+  "Unit_8.pdf":
+    unit_name: unit8_applications
+    target_cards: 50
+    tags: [unit8, applications]
+
+card_distribution:
+  conceptual: 0.40
+  worked_examples: 0.20
+  algorithm: 0.20
+  pattern_recognition: 0.10
+  visual: 0.10
+
+ollama:
+  enabled: true
+  base_url: http://localhost:11434
+  model: ministral-3:8b
+  timeout: 30
+  batch_size: 5
+  max_retries: 3
+  description_length: concise  # 50-100 words

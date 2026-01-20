@@ -1,0 +1,174 @@
+"""
+HTTP client for Ollama API.
+
+Provides low-level interface to Ollama's vision capabilities.
+"""
+
+import httpx
+import logging
+import time
+from typing import Optional, Dict, Any
+from pathlib import Path
+
+logger = logging.getLogger(__name__)
+
+
+class OllamaClient:
+    """
+    HTTP client for interacting with Ollama API.
+
+    Attributes:
+        base_url: Ollama API base URL
+        model: Vision model name
+        timeout: Request timeout in seconds
+        max_retries: Maximum retry attempts
+    """
+
+    def __init__(
+        self,
+        base_url: str = "http://localhost:11434",
+        model: str = "ministral-3:8b",
+        timeout: int = 30,
+        max_retries: int = 3
+    ):
+        """
+        Initialize Ollama client.
+
+        Args:
+            base_url: Ollama server URL
+            model: Vision model to use
+            timeout: Request timeout in seconds
+            max_retries: Maximum retry attempts
+        """
+        self.base_url = base_url.rstrip('/')
+        self.model = model
+        self.timeout = timeout
+        self.max_retries = max_retries
+
+    def check_availability(self) -> bool:
+        """
+        Check if Ollama server is available and model is pulled.
+
+        Returns:
+            True if Ollama is available and ready, False otherwise
+        """
+        try:
+            # Check server
+            with httpx.Client(timeout=5.0) as client:
+                response = client.get(f"{self.base_url}/api/tags")
+                if response.status_code != 200:
+                    logger.warning("Ollama server not responding")
+                    return False
+
+                # Check if model is available
+                data = response.json()
+                models = [m['name'] for m in data.get('models', [])]
+
+                # Check for exact match or partial match (e.g., "ministral-3:8b" or "ministral-3:latest")
+                model_available = any(
+                    self.model in model_name or model_name in self.model
+                    for model_name in models
+                )
+
+                if not model_available:
+                    logger.warning(f"Model '{self.model}' not found. Available: {models}")
+                    return False
+
+                logger.info(f"Ollama available with model: {self.model}")
+                return True
+
+        except Exception as e:
+            logger.debug(f"Ollama not available: {e}")
+            return False
+
+    def generate_with_image(
+        self,
+        prompt: str,
+        image_path: str,
+        stream: bool = False
+    ) -> Optional[str]:
+        """
+        Generate text response from image and prompt.
+
+        Args:
+            prompt: Text prompt for the model
+            image_path: Path to image file
+            stream: Whether to stream the response
+
+        Returns:
+            Generated text response, or None if failed
+
+        Raises:
+            FileNotFoundError: If image file doesn't exist
+            httpx.TimeoutException: If request times out
+        """
+        image_file = Path(image_path)
+        if not image_file.exists():
+            raise FileNotFoundError(f"Image not found: {image_path}")
+
+        # Read and encode image as base64
+        import base64
+        with open(image_file, 'rb') as f:
+            image_data = base64.b64encode(f.read()).decode('utf-8')
+
+        # Prepare request
+        payload = {
+            "model": self.model,
+            "prompt": prompt,
+            "images": [image_data],
+            "stream": stream
+        }
+
+        # Retry logic with exponential backoff
+        for attempt in range(self.max_retries):
+            try:
+                with httpx.Client(timeout=self.timeout) as client:
+                    response = client.post(
+                        f"{self.base_url}/api/generate",
+                        json=payload
+                    )
+
+                    if response.status_code == 200:
+                        result = response.json()
+                        return result.get('response', '').strip()
+                    else:
+                        logger.error(f"Ollama API error: {response.status_code} - {response.text}")
+                        return None
+
+            except httpx.TimeoutException:
+                if attempt < self.max_retries - 1:
+                    wait_time = 2 ** attempt  # Exponential backoff: 1s, 2s, 4s
+                    logger.warning(f"Timeout on attempt {attempt + 1}, retrying in {wait_time}s...")
+                    time.sleep(wait_time)
+                else:
+                    logger.error(f"Timeout after {self.max_retries} attempts")
+                    raise
+
+            except Exception as e:
+                logger.error(f"Ollama API error: {e}")
+                return None
+
+        return None
+
+    def get_model_info(self) -> Optional[Dict[str, Any]]:
+        """
+        Get information about the current model.
+
+        Returns:
+            Model information dictionary, or None if failed
+        """
+        try:
+            with httpx.Client(timeout=5.0) as client:
+                response = client.post(
+                    f"{self.base_url}/api/show",
+                    json={"name": self.model}
+                )
+
+                if response.status_code == 200:
+                    return response.json()
+                else:
+                    return None
+
+        except Exception as e:
+            logger.debug(f"Failed to get model info: {e}")
+            return None

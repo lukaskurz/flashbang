@@ -1,0 +1,8 @@
+venv/
+.env
+__pycache__/
+*.pyc
+outputs/markdown/
+outputs/anki/
+*.log
+.DS_Store

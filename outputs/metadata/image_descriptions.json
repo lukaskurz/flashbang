@@ -1,0 +1,937 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-01-20T20:01:27.105726",
+  "ollama_model": "ministral-3:8b",
+  "images": {
+    "test_unit1_page01_img01.png": {
+      "filename": "test_unit1_page01_img01.png",
+      "unit": "test_unit1",
+      "page": 1,
+      "path": "outputs/images/test_unit1_page01_img01.png",
+      "dimensions": {
+        "width": 200,
+        "height": 100
+      },
+      "extracted_at": "2026-01-20T19:09:39.784673",
+      "description": "This image is a **logo** for **Johannes Kepler University Linz**, featuring a stylized, modern typographic design. The logo combines the letters **\"J\"** and **\"U\"** in a bold, geometric arrangement: the **\"J\"** is split into two curved lines forming an inverted **\"V\"**, while the **\"U\"** is split into two vertical lines with a horizontal bar connecting them, symbolizing unity and connection. Below, the full university name—**\"Johannes Kepler University Linz\"**—is written in a clean, sans-serif font.\n\nIn the context of **Unit 1: Estimation Theory** from the lecture by **Johannes Brandstetter**, the logo subtly reinforces themes of **structured problem-solving** (via its precise geometric design) and **integration of knowledge** (the unified \"J\" and \"U\" elements). The minimalist aesthetic also reflects the analytical rigor expected in estimation techniques, where clarity and precision are paramount.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:51:37.541192"
+    },
+    "test_unit1_page01_img02.png": {
+      "filename": "test_unit1_page01_img02.png",
+      "unit": "test_unit1",
+      "page": 1,
+      "path": "outputs/images/test_unit1_page01_img02.png",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "extracted_at": "2026-01-20T19:09:39.784675",
+      "description": "This image is a **logo-style graphic** combining typography and abstract design. It visually represents the **Institute for Machine Learning** with a focus on the acronym **\"JU\"** (likely referring to Johannes Kepler University Linz, where Johannes Brandstetter is affiliated). The bold, stylized \"J\" and \"U\" with a central horizontal bar evoke **interconnectedness and integration**—key themes in estimation theory and machine learning. The clean, modern aesthetic suggests **precision and structured problem-solving**, aligning with the quantitative and analytical nature of estimation techniques taught in this unit. The minimalist design reinforces clarity and focus on core concepts.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:51:47.377449"
+    },
+    "unit0_intro_page01_img01.png": {
+      "filename": "unit0_intro_page01_img01.png",
+      "unit": "unit0_intro",
+      "page": 1,
+      "path": "outputs/images/unit0_intro_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:11.514237",
+      "description": "This image is a **logo** for **Johannes Kepler University Linz**, featuring a minimalist and modern design. The logo visually represents the intersection of knowledge and innovation, aligning with the theme of an advanced machine learning course.\n\nThe key visual elements include:\n- **Three stylized \"J\" letters** forming a bridge or connection, symbolizing **integration and interdisciplinary learning**—critical in advanced machine learning techniques.\n- The **bold, clean typography** (\"Johannes Kepler University Linz\") reinforces academic rigor, emphasizing structure and clarity in complex topics.\n- The **negative space and geometric precision** reflect the analytical and systematic approach central to machine learning methodologies.\n\nTogether, these elements convey the university’s commitment to cutting-edge research and structured exploration of advanced ML concepts.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:51:56.565608"
+    },
+    "unit0_intro_page01_img02.png": {
+      "filename": "unit0_intro_page01_img02.png",
+      "unit": "unit0_intro",
+      "page": 1,
+      "path": "outputs/images/unit0_intro_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:11.591990",
+      "description": "This image is a **logo-style graphic** for the *Institute for Machine Learning*. It visually represents the core theme of advanced machine learning through its typographic design:\n\nThe bold, stylized **\"J\" and \"U\"** letters form a **V-shaped intersection with a horizontal bar**, symbolizing **convergence, decision-making, and layered learning**—key concepts in advanced ML techniques like neural networks or hierarchical models. The clean, modern typography underscores **precision and innovation**, while the negative space between the letters suggests **flexibility and adaptability** in algorithms. The tagline *\"Institute for Machine Learning\"* reinforces the focus on cutting-edge research, positioning the institute as a hub for transformative ML methodologies. The minimalist aesthetic aligns with the efficiency and complexity of modern machine learning frameworks.",
+      "type": "algorithm",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:52:07.262030"
+    },
+    "unit1_fundamentals_page01_img01.png": {
+      "filename": "unit1_fundamentals_page01_img01.png",
+      "unit": "unit1_fundamentals",
+      "page": 1,
+      "path": "outputs/images/unit1_fundamentals_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:11.697545",
+      "description": "This image is a **logo** for **Johannes Kepler University Linz (JKU)**, featuring a stylized, modern typographic design. In the context of the *Estimation Theory* lecture by Johannes Brandstetter, the logo subtly reinforces academic rigor and precision—key themes in estimation techniques. The bold, geometric \"J\" and \"U\" letters evoke clarity and structured problem-solving, while the clean, sans-serif font underscores analytical thinking. The minimalist composition aligns with the lecture’s focus on systematic approaches to uncertainty quantification and data-driven inference, symbolizing the university’s commitment to advancing machine learning through methodical research. The stark contrast and symmetry reflect the balance between theory and application in estimation frameworks.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:52:16.555989"
+    },
+    "unit1_fundamentals_page01_img02.png": {
+      "filename": "unit1_fundamentals_page01_img02.png",
+      "unit": "unit1_fundamentals",
+      "page": 1,
+      "path": "outputs/images/unit1_fundamentals_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:11.773133",
+      "description": "This image is a **logo-style graphic** combining typography and geometric abstraction to represent the **Institute for Machine Learning**. For the context of *Unit 1: Estimation Theory* by Johannes Brandstetter, the design subtly ties into core ML concepts:\n\nThe **bold, stylized \"J\" and \"U\"** letters form a **Venn-like intersection**, symbolizing **overlapping domains**—a key theme in estimation theory (e.g., combining probabilistic models or merging evidence). The **horizontal bar** beneath the \"V\" could represent **foundational principles** (e.g., statistical assumptions or constraints) underpinning machine learning estimation. The **minimalist, clean aesthetic** reflects the precision and rigor of estimation techniques, while the **dynamic typography** hints at the adaptive nature of learning algorithms. The logo’s clarity and structure mirror the page’s focus on structured, mathematical approaches to uncertainty quantification.",
+      "type": "algorithm",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:52:27.873544"
+    },
+    "unit2_concepts_page01_img01.png": {
+      "filename": "unit2_concepts_page01_img01.png",
+      "unit": "unit2_concepts",
+      "page": 1,
+      "path": "outputs/images/unit2_concepts_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:11.879707",
+      "description": "This image is a **logo** for **Johannes Kepler University Linz**, featuring a stylized, minimalist design. While not directly illustrating the lecture content on *Bayes Techniques* or *Probabilistic Principal Component Analysis (pPCA)*, it subtly ties into the academic context by representing **structured yet interconnected knowledge**—a metaphor for how probabilistic and statistical methods (like Bayesian inference or dimensionality reduction) organize complex data.\n\nThe **bold, overlapping \"J\" and \"U\" letters** symbolize integration and relationships, akin to how probabilistic models (e.g., Bayesian networks) model dependencies. The clean, modern typography reinforces the precision of advanced statistical techniques. Thus, the logo’s clarity and structure mirror the lecture’s focus on **systematic, data-driven reasoning**.",
+      "type": "network",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:52:37.542568"
+    },
+    "unit2_concepts_page01_img02.png": {
+      "filename": "unit2_concepts_page01_img02.png",
+      "unit": "unit2_concepts",
+      "page": 1,
+      "path": "outputs/images/unit2_concepts_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:11.954080",
+      "description": "This image is a **logo-style graphic** combining typography and geometric design. It visually represents the **Institute for Machine Learning** with a stylized, modern aesthetic.\n\nFor **Unit 2 (Bayes Techniques, pPCA)**, the logo subtly reinforces key themes:\n- The **bold, interconnected \"J\" and \"U\"** symbols evoke **joint probability distributions** (central to Bayesian methods) and **dimensionality reduction** (like Probabilistic PCA, pPCA), where variables or features are interrelated.\n- The **horizontal bar** could symbolize **latent variables** or **principal components** in pPCA, emphasizing structure in high-dimensional data.\n- The **clean, minimalist design** aligns with probabilistic modeling’s focus on clarity and abstraction.\n\nOverall, it aligns with the page’s technical yet approachable tone.",
+      "type": "graph",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:52:48.526955"
+    },
+    "unit2_concepts_page12_img03.png": {
+      "filename": "unit2_concepts_page12_img03.png",
+      "unit": "unit2_concepts",
+      "page": 12,
+      "path": "outputs/images/unit2_concepts_page12_img03.png",
+      "dimensions": {
+        "width": 755,
+        "height": 670
+      },
+      "extracted_at": "2026-01-20T19:15:11.985219",
+      "description": "This image consists of six density plots illustrating the **conjugate relationship between the Poisson and Gamma distributions**. Each subplot shows the evolution of posterior distributions for the Poisson rate parameter λ (purple) as sample size \\( n \\) increases, given a Gamma prior \\( \\text{Gamma}(\\alpha=1, \\beta=1) \\) and observed data with \\( \\lambda = 3 \\). The orange curve represents the prior distribution. As \\( n \\) grows (from 2 to 200), the posterior (purple) sharpens around the true \\( \\lambda = 3 \\), converging to a near-delta spike, demonstrating how Bayesian inference refines uncertainty with more data. The vertical dashed line marks \\( \\lambda = 3 \\).",
+      "type": "graph",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:52:54.964588"
+    },
+    "unit2_concepts_page13_img04.png": {
+      "filename": "unit2_concepts_page13_img04.png",
+      "unit": "unit2_concepts",
+      "page": 13,
+      "path": "outputs/images/unit2_concepts_page13_img04.png",
+      "dimensions": {
+        "width": 840,
+        "height": 438
+      },
+      "extracted_at": "2026-01-20T19:15:12.001159",
+      "description": "This image is a **probability density plot** illustrating the **Maximum A Posteriori (MAP) estimation** concept. It compares two distributions: the **prior distribution** \\( p(w) \\) (a broad curve) and the **posterior distribution** \\( p(w|\\{z\\}) \\) (a narrower, taller curve) after observing data \\(\\{z\\}\\). The MAP estimate, denoted \\( w_{\\text{MAP}} \\), is the mode of the posterior distribution—the parameter value with the highest probability. The plot highlights how the posterior shifts and sharpens around the most likely parameter setting, providing a point estimate rather than a full probabilistic distribution.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:53:00.468486"
+    },
+    "unit2_concepts_page19_img05.png": {
+      "filename": "unit2_concepts_page19_img05.png",
+      "unit": "unit2_concepts",
+      "page": 19,
+      "path": "outputs/images/unit2_concepts_page19_img05.png",
+      "dimensions": {
+        "width": 685,
+        "height": 280
+      },
+      "extracted_at": "2026-01-20T19:15:12.018034",
+      "description": "This image is a **diagram** illustrating latent variable models in generative machine learning. It depicts the relationship between latent variables \\( z \\) and observed data \\( x \\).\n\nOn the left, \\( p(z) \\) (in red) shows the distribution of latent variables, visualized as a multi-modal probability space with several clusters. On the right, \\( p(x|z) \\) (in blue) maps these latent variables to generated data, such as images of horses. The arrows indicate the generative process: latent variables \\( z \\) are sampled from \\( p(z) \\), then transformed into data \\( x \\) via \\( p(x|z) \\). This diagram emphasizes how latent spaces can encode diverse data representations.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:53:05.264739"
+    },
+    "unit2_concepts_page24_img06.png": {
+      "filename": "unit2_concepts_page24_img06.png",
+      "unit": "unit2_concepts",
+      "page": 24,
+      "path": "outputs/images/unit2_concepts_page24_img06.png",
+      "dimensions": {
+        "width": 1490,
+        "height": 588
+      },
+      "extracted_at": "2026-01-20T19:15:12.051747",
+      "description": "This image is a schematic diagram illustrating **Probabilistic Principal Component Analysis (PPCA)**. It consists of three key panels:\n\n1. **Left panel**: A Gaussian distribution \\( p(z) \\) for the latent variable \\( z \\), with a specific value \\( \\hat{z} \\) highlighted.\n2. **Middle panel**: A 2D data space (\\( x_1, x_2 \\)) showing the conditional distribution \\( p(x|\\hat{z}) \\), represented as an ellipse centered at \\( \\mu + W\\hat{z} \\). The dashed line indicates the linear transformation from \\( z \\) to \\( x \\) via \\( W \\), with \\( \\mu \\) as the mean offset.\n3. **Right panel**: The marginal distribution \\( p(x) \\) of observed data, depicted as an elliptical contour, reflecting the combined effect of \\( \\mu \\), \\( W \\), and \\( \\sigma^2 I \\).\n\nThe diagram emphasizes how a latent variable \\( z \\) is mapped to data \\( x \\) via a Gaussian distribution with mean \\( \\mu + Wz \\) and isotropic covariance \\( \\sigma^2 I \\).",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:53:15.633991"
+    },
+    "unit3_bayesian_networks_page01_img01.png": {
+      "filename": "unit3_bayesian_networks_page01_img01.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 1,
+      "path": "outputs/images/unit3_bayesian_networks_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:12.161240",
+      "description": "This image is a **logo** for **Johannes Kepler University Linz**, featuring a stylized, minimalist design. While not directly illustrating *Variational Autoencoders* (VAEs), it subtly ties into the university’s identity—where machine learning research (like VAEs) is conducted.\n\nThe logo’s **bold, geometric \"J\" and \"U\" letters** with a **crossbar resembling a \"V\"** (central to VAEs) evoke structure and transformation—key themes in VAEs, which encode data into latent distributions (e.g., Gaussian \"V\" shapes) for generative reconstruction. The stark contrast and precision align with the mathematical rigor of variational inference, reinforcing the university’s role as a hub for advanced ML techniques.",
+      "type": "diagram",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:53:25.130874"
+    },
+    "unit3_bayesian_networks_page01_img02.png": {
+      "filename": "unit3_bayesian_networks_page01_img02.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 1,
+      "path": "outputs/images/unit3_bayesian_networks_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:12.237713",
+      "description": "This image is a **logo-style graphic** for the *Institute for Machine Learning*, featuring stylized text to represent the acronym **\"JU\"** (likely referring to Johannes Kepler University Linz, where Johannes Brandstetter is affiliated). The design subtly ties into **Variational Autoencoders (VAEs)**—a key topic in this lecture—through its abstract, structured yet flexible form:\n\n- The **bold, interconnected \"J\" and \"U\"** resemble a **bottleneck architecture**, central to VAEs, where latent space compression occurs.\n- The **horizontal bar** mimics the encoder-decoder structure, emphasizing transformation and reconstruction.\n- The **negative space and symmetry** evoke probabilistic latent variables, a core VAE concept, where data is mapped to a low-dimensional, structured distribution.\n\nTogether, these elements visually abstract the interplay between encoding, latent representation, and decoding in VAEs.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:53:36.322107"
+    },
+    "unit3_bayesian_networks_page03_img03.png": {
+      "filename": "unit3_bayesian_networks_page03_img03.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 3,
+      "path": "outputs/images/unit3_bayesian_networks_page03_img03.png",
+      "dimensions": {
+        "width": 460,
+        "height": 183
+      },
+      "extracted_at": "2026-01-20T19:15:12.243122",
+      "description": "This image is a **diagram** illustrating a basic **autoencoder** architecture. It shows an input (e.g., an image of a dog) **x** being processed by an **encoder**, which compresses it into a **latent variable** **z**—a lower-dimensional representation. The **decoder** then reconstructs the input from **z**, producing an output **x̂**. While this page discusses **variational autoencoders (VAEs)**, which model distributions for **x** and **z**, this diagram simplifies the concept by emphasizing the deterministic flow from input to latent space and back. The key visual elements include the encoder (yellow), latent variable (colored bars), and decoder (blue).",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:53:40.822687"
+    },
+    "unit3_bayesian_networks_page05_img04.png": {
+      "filename": "unit3_bayesian_networks_page05_img04.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 5,
+      "path": "outputs/images/unit3_bayesian_networks_page05_img04.png",
+      "dimensions": {
+        "width": 768,
+        "height": 401
+      },
+      "extracted_at": "2026-01-20T19:15:12.294239",
+      "description": "This image consists of two scatter plots with contour overlays, illustrating **Mixture of Gaussians (MOG)** in machine learning.\n\nThe left plot, labeled **\"Single Gaussian,\"** shows data points (green) clustered in one elongated elliptical distribution, represented by nested blue contours. This indicates a single Gaussian distribution with a mean (µ) and covariance matrix (Σ) capturing the data’s spread.\n\nThe right plot, labeled **\"Mixture of two Gaussians,\"** depicts two distinct green clusters, each surrounded by blue contours. This demonstrates how MOG models complex distributions by combining multiple Gaussian components (here, two), each with its own parameters (πₖ, µₖ, Σₖ), to fit the overall data distribution. The contours highlight overlapping regions, reflecting the mixture’s ability to capture multimodal data.",
+      "type": "table",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:53:46.633523"
+    },
+    "unit3_bayesian_networks_page08_img05.png": {
+      "filename": "unit3_bayesian_networks_page08_img05.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 8,
+      "path": "outputs/images/unit3_bayesian_networks_page08_img05.png",
+      "dimensions": {
+        "width": 678,
+        "height": 237
+      },
+      "extracted_at": "2026-01-20T19:15:12.301352",
+      "description": "This image is a **diagram of a variational autoencoder (VAE)** illustrating the encoding-decoding process of Gaussian-distributed data. It features three key visual elements: an **input variable** \\( x \\) (drawn from \\( \\mathcal{N}(\\mu, \\sigma^2) \\)), an **encoder** (yellow block) mapping \\( x \\) to a latent variable \\( z \\) (assumed \\( \\mathcal{N}(0,1) \\)), and a **decoder** (blue block) reconstructing \\( \\hat{x} \\) from \\( z \\). The trivial solution shown aligns with the page’s context, where \\( z \\) is derived linearly from \\( x \\) (\\( z = \\frac{x - \\mu}{\\sigma} \\)) and \\( x \\) is reconstructed via \\( \\hat{x} = \\mu + \\sigma z \\), emphasizing linear transformations \\( \\phi = [a, b] \\) (encoder) and \\( \\theta = [c, d] \\) (decoder).",
+      "type": "diagram",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:53:53.116083"
+    },
+    "unit3_bayesian_networks_page12_img06.png": {
+      "filename": "unit3_bayesian_networks_page12_img06.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 12,
+      "path": "outputs/images/unit3_bayesian_networks_page12_img06.png",
+      "dimensions": {
+        "width": 607,
+        "height": 280
+      },
+      "extracted_at": "2026-01-20T19:15:12.308781",
+      "description": "This image is a schematic line graph illustrating the relationship between **log p(x)** and the **Evidence Lower Bound (ELBO)** in variational inference.\n\nThe **blue wavy line** represents **log p(x)**, the true log-likelihood of data. The **orange line** depicts the **ELBO(x)**, an approximation of log p(x) via variational inference. The **vertical double-headed arrow** labeled **D_KL(q_φ(z|x) ∥ p(z|x))** shows the **Kullback-Leibler divergence** between the variational posterior (q_φ) and the true posterior (p), highlighting the trade-off: maximizing ELBO minimizes this divergence, balancing data likelihood and model complexity. The image visually conveys that ELBO serves as a lower bound to log p(x).",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:53:58.532104"
+    },
+    "unit3_bayesian_networks_page27_img07.png": {
+      "filename": "unit3_bayesian_networks_page27_img07.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 27,
+      "path": "outputs/images/unit3_bayesian_networks_page27_img07.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 395
+      },
+      "extracted_at": "2026-01-20T19:15:12.319526",
+      "description": "This image is a **diagram** illustrating the architecture of a **Variational Autoencoder (VAE)**. It visually breaks down the VAE into two main components: the encoder and the decoder.\n\nThe **encoder** (left side) uses a neural network \\( h_\\phi(x) \\) to transform input data \\( x \\) into parameters \\( \\mu \\) (mean) and \\( \\log(\\sigma^2) \\) (log-variance) of a Gaussian distribution. A latent variable \\( z \\) is then sampled from this distribution \\( N(\\mu, \\text{diag}(\\sigma^2)) \\).\n\nThe **decoder** (right side) takes the sampled latent variable \\( z \\) through a generative model \\( f_\\theta(z) \\), producing an intermediate representation \\( \\psi \\), which is finally decoded by \\( D(\\psi) \\) to reconstruct the input data \\( x' \\). This diagram emphasizes the probabilistic flow from encoding to decoding in a VAE.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:54:06.051034"
+    },
+    "unit3_bayesian_networks_page27_img08.png": {
+      "filename": "unit3_bayesian_networks_page27_img08.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 27,
+      "path": "outputs/images/unit3_bayesian_networks_page27_img08.png",
+      "dimensions": {
+        "width": 1206,
+        "height": 880
+      },
+      "extracted_at": "2026-01-20T19:15:12.346443",
+      "description": "This image is a schematic diagram illustrating the architecture of a **Variational Autoencoder (VAE)** used for latent variable modeling.\n\nThe top part shows the **encoder network** \\( h_\\phi(x) \\), which transforms input data \\( x \\) into parameters of a latent distribution: the mean (\\(\\mu\\)) and log-variance (\\(\\log \\sigma^2\\)). The bottom part depicts two separate **decoder networks** \\( h_\\phi^{(1)}(x) \\) and \\( h_\\phi^{(2)}(x) \\), each likely representing the transformations applied to sample from the latent space (reparameterization trick) before reconstructing the input data. The diagram emphasizes the flow from input through encoding to latent space parameters and subsequent decoding.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:54:14.848013"
+    },
+    "unit3_bayesian_networks_page28_img09.png": {
+      "filename": "unit3_bayesian_networks_page28_img09.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 28,
+      "path": "outputs/images/unit3_bayesian_networks_page28_img09.png",
+      "dimensions": {
+        "width": 798,
+        "height": 1276
+      },
+      "extracted_at": "2026-01-20T19:15:12.372503",
+      "description": "This image displays a **Python code snippet** illustrating a **Variational Autoencoder (VAE)** implementation using PyTorch. It shows the class structure of a VAE (`VAE(nn.Module)`), including initialization of encoder and decoder layers with linear transformations (`nn.Linear`). Key visual elements include:\n\n- **Encoder (`encoder` method)**: Two linear layers followed by ReLU activations, producing mean (`mu`) and log-variance (`logvar`) of the latent distribution.\n- **Reparameterization trick (`reparameterize` method)**: Sampling latent variable `z` using `mu` and `logvar` to enable gradient flow.\n- **Decoder (`decoder` method)**: Reconstructs input from latent `z` via linear layers and ReLU activations.\n- **Forward pass (`forward` method)**: Combines encoding, reparameterization, and decoding to return reconstructions and latent variables.\n\nThis code exemplifies core VAE concepts: encoding data into a probabilistic latent space and decoding it back while preserving structure.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:54:24.892597"
+    },
+    "unit3_bayesian_networks_page29_img10.png": {
+      "filename": "unit3_bayesian_networks_page29_img10.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 29,
+      "path": "outputs/images/unit3_bayesian_networks_page29_img10.png",
+      "dimensions": {
+        "width": 1212,
+        "height": 676
+      },
+      "extracted_at": "2026-01-20T19:15:12.386893",
+      "description": "This image is a **diagram illustrating the architecture of a Variational Autoencoder (VAE)**. It depicts the flow of data through the encoder-decoder framework:\n\n1. **Input (x)**: The original data is fed into the encoder network \\( h_\\phi(x) \\).\n2. **Latent Variables**: The encoder outputs two parameters, \\( \\mu \\) (mean) and \\( \\log \\sigma^2 \\) (log-variance), which define a distribution.\n3. **Sampling (z)**: A latent variable \\( z \\) is sampled from a normal distribution \\( N(\\mu, \\sigma^2) \\) using \\( \\epsilon \\sim N(0, I) \\).\n4. **Decoder (f_θ(z))**: The decoder reconstructs the input data \\( x' \\) from the latent variable \\( z \\).\n\nThis diagram emphasizes the probabilistic nature of VAEs, highlighting the reparameterization trick for training.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:54:33.670858"
+    },
+    "unit3_bayesian_networks_page30_img11.png": {
+      "filename": "unit3_bayesian_networks_page30_img11.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 30,
+      "path": "outputs/images/unit3_bayesian_networks_page30_img11.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 778
+      },
+      "extracted_at": "2026-01-20T19:15:12.413867",
+      "description": "This image illustrates the **latent space mapping in a Variational Autoencoder (VAE)**. It combines a **3D schematic** with **pixelated digit visuals** (likely MNIST-style handwritten digits).\n\nThe lower part shows a **2D latent space** (ℝ²) sampled from a Gaussian distribution *N*(0, *I*), with red dots representing sampled latent variables. Arrows point upward to the generated digits (*fθ(x)*)—the decoded outputs—demonstrating how different latent points map to distinct digit representations. The key concept is that the VAE learns a continuous latent space where nearby points generate similar images, preserving structure from the input distribution.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:54:41.928097"
+    },
+    "unit3_bayesian_networks_page31_img12.png": {
+      "filename": "unit3_bayesian_networks_page31_img12.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 31,
+      "path": "outputs/images/unit3_bayesian_networks_page31_img12.png",
+      "dimensions": {
+        "width": 1486,
+        "height": 1038
+      },
+      "extracted_at": "2026-01-20T19:15:12.446672",
+      "description": "This image illustrates the core workflow of a **Variational Autoencoder (VAE)** in latent space representation. It features two heatmap-style visuals—an **\"Original\"** and a **\"Reconstructed\"** image of a stylized \"7\"—showing the input data and its decoded output.\n\nBelow, the diagram depicts the latent space transformation:\n- **\\( q_\\phi(z|x) \\)**: The encoder (dashed arrow) maps the original input \\( x \\) to a latent variable \\( z \\) in a lower-dimensional space \\( \\mathbb{R}^J \\).\n- **\\( f_\\theta(z) \\)**: The decoder (solid arrow) reconstructs the data from \\( z \\), approximating the original input.\n\nThe red ellipse in the latent space highlights the probabilistic distribution of \\( z \\), emphasizing the VAE’s goal of learning a meaningful, continuous latent representation.",
+      "type": "diagram",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:54:54.283087"
+    },
+    "unit3_bayesian_networks_page31_img13.png": {
+      "filename": "unit3_bayesian_networks_page31_img13.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 31,
+      "path": "outputs/images/unit3_bayesian_networks_page31_img13.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 880
+      },
+      "extracted_at": "2026-01-20T19:15:12.469751",
+      "description": "This image is a schematic illustrating the **Variational Autoencoder (VAE) latent space** concept. It shows two original digit images, labeled **\\(x_1\\)** (digit \"3\") and **\\(x_2\\)** (digit \"7\"), being mapped to a lower-dimensional latent space **\\( \\mathbb{R}^J \\)** via the encoder function **\\( q_\\phi(z|x) \\)**.\n\nKey visual elements include:\n- The original high-dimensional input images (\\(x_1\\) and \\(x_2\\)).\n- A probabilistic latent representation (\\(z_1\\) and \\(z_2\\)) in the latent space, depicted as red ellipses, indicating distributions of encoded features.\n- Arrows showing the transformation from input images to their latent space embeddings.\n\nThis visualizes how VAEs learn a compressed, continuous latent space (\\(z\\)) to capture essential features of input data.",
+      "type": "diagram",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:55:04.518740"
+    },
+    "unit3_bayesian_networks_page32_img14.png": {
+      "filename": "unit3_bayesian_networks_page32_img14.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 32,
+      "path": "outputs/images/unit3_bayesian_networks_page32_img14.png",
+      "dimensions": {
+        "width": 809,
+        "height": 337
+      },
+      "extracted_at": "2026-01-20T19:15:12.482366",
+      "description": "This image is a **directed graphical model** illustrating a **Markovian Hierarchical Variational Autoencoder (HVAE)**. It depicts a generative process where observed data **\\(x\\)** is conditioned on latent variables \\(z_1, z_2, ..., z_T\\) arranged in a **Markov chain hierarchy**. The arrows labeled \\(p(x|z_1)\\), \\(p(z_2|z_1)\\), ..., \\(p(z_T|z_{T-1})\\) represent the generative probabilities of each layer, while the arrows labeled \\(q(z_1|x)\\), \\(q(z_2|z_1)\\), ..., \\(q(z_T|z_{T-1})\\) denote the inference (encoder) distributions. This structure shows how higher-level latents abstract lower-level ones sequentially, capturing hierarchical dependencies.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:55:10.288597"
+    },
+    "unit4_inference_page01_img01.png": {
+      "filename": "unit4_inference_page01_img01.png",
+      "unit": "unit4_inference",
+      "page": 1,
+      "path": "outputs/images/unit4_inference_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:12.605729",
+      "description": "This image is a **logo** for **Johannes Kepler University Linz**, featuring a stylized, minimalist design. While not directly illustrating the lecture content on ODEs (Ordinary Differential Equations), PDEs (Partial Differential Equations), SDEs (Stochastic Differential Equations), and Neural ODEs, it subtly ties into the academic context of the course by representing **mathematical rigor and innovation**—key themes in advanced computational and theoretical approaches.\n\nThe logo’s **bold, geometric letters** (especially the \"J\" and \"U\" forming a dynamic, almost equation-like structure) evoke **precision and structure**, mirroring the formal mathematical frameworks discussed in the lecture. The clean, modern aesthetic aligns with the intersection of **theory and applied machine learning**, reinforcing the university’s role as a hub for cutting-edge research in these fields.",
+      "type": "formula",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:55:20.374664"
+    },
+    "unit4_inference_page01_img02.png": {
+      "filename": "unit4_inference_page01_img02.png",
+      "unit": "unit4_inference",
+      "page": 1,
+      "path": "outputs/images/unit4_inference_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:12.680184",
+      "description": "This image is a **logo-style graphic** featuring the acronym **\"JU\"** in a stylized, bold font. The design incorporates dynamic, geometric elements—two vertical lines forming a \"V\" shape with a horizontal bar intersecting them, creating a sense of motion and connectivity. Below the logo, the text reads **\"Institute for Machine Learning\"**, reinforcing the affiliation with advanced machine learning research.\n\nFor **Unit 4** on **ODEs (Ordinary Differential Equations), PDEs (Partial Differential Equations), SDEs (Stochastic Differential Equations), and Neural ODEs**, the logo subtly conveys **mathematical abstraction and computational fluidity**. The intersecting lines may symbolize **interdisciplinary integration**—bridging classical differential equations with modern neural network frameworks. The clean, modern aesthetic aligns with the cutting-edge nature of Neural ODEs, where deep learning meets continuous dynamics.",
+      "type": "formula",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:55:31.619933"
+    },
+    "unit4_inference_page09_img03.png": {
+      "filename": "unit4_inference_page09_img03.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img03.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:12.846044",
+      "description": "This image is a **phase portrait** of a system of linear ordinary differential equations (ODEs) depicting a **saddle point** with eigenvalues λ₁ > 0 and λ₂ < 0. The black arrows represent vector fields showing trajectory directions, while the colored curves illustrate solution trajectories.\n\nKey visual elements include:\n- **Stable and unstable manifolds**: Trajectories converge along the stable manifold (λ₂ < 0) and diverge along the unstable manifold (λ₁ > 0).\n- **Curved paths** near the origin indicate the saddle nature, where trajectories approach and depart asymmetrically.\n- The origin acts as a **saddle point**, balancing instability and stability. This highlights how eigenvalues determine long-term behavior in linear ODE systems.",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:55:49.917677"
+    },
+    "unit4_inference_page09_img04.png": {
+      "filename": "unit4_inference_page09_img04.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img04.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:12.985081",
+      "description": "This image is a **phase portrait** illustrating a **saddle point** in the context of systems of linear ordinary differential equations (ODEs). It depicts trajectories of solutions for eigenvalues with **λ₁ > 0** (unstable direction) and **λ₂ < 0** (stable direction).\n\nKey visual elements include:\n- **Black arrows** showing vector fields and flow direction.\n- **Red dashed lines** marking the **eigenvectors** along the axes, with one pointing upward-right (unstable manifold, λ₁ > 0) and the other downward-left (stable manifold, λ₂ < 0).\n- **Trajectories** converging along the stable direction and diverging along the unstable one, emphasizing the saddle’s hyperbolic nature.\n\nThis visualizes how trajectories behave near a saddle equilibrium.",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:56:08.871788"
+    },
+    "unit4_inference_page09_img05.png": {
+      "filename": "unit4_inference_page09_img05.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img05.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:13.123584",
+      "description": "This image is a **phase portrait** of a system of linear ordinary differential equations (ODEs) with **two distinct real eigenvalues** (λ₁ > 0, λ₂ < 0). It illustrates a **saddle point equilibrium**, where trajectories diverge along the direction of the positive eigenvalue (red dashed line) and converge toward the negative eigenvalue (blue line). The black arrows depict the vector field, showing trajectories repelled in one direction and attracted in another, radiating outward from the origin. Colored curves represent solution paths, emphasizing the unstable (outward) and stable (inward) behaviors characteristic of a saddle.",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:56:26.395687"
+    },
+    "unit4_inference_page09_img06.png": {
+      "filename": "unit4_inference_page09_img06.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img06.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:13.270209",
+      "description": "This image is a **phase portrait** illustrating a **saddle point** in the context of systems of linear ordinary differential equations (ODEs). The plot shows vector fields representing trajectories of solutions for eigenvalues with **one positive (λ₁ > 0)** and **one negative (λ₂ < 0)** real part.\n\nKey visual elements include:\n- **Arrows** indicating direction and flow of trajectories.\n- A **stable manifold** (curved inward toward the origin along λ₂ < 0) and an **unstable manifold** (diverging outward along λ₁ > 0).\n- The **origin** acts as a saddle point, where trajectories approach along one axis and diverge along the other, reflecting the mixed stability of eigenvalues. The orange lines likely denote the eigenvector directions.",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:56:44.878507"
+    },
+    "unit4_inference_page09_img07.png": {
+      "filename": "unit4_inference_page09_img07.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img07.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:13.406691",
+      "description": "This image is a **phase portrait** of a system of linear ordinary differential equations (ODEs) with **complex eigenvalues** (saddle case where one eigenvalue λ₁ has a positive real part and λ₂ has a negative real part).\n\nKey visual elements:\n- **Black arrows** depict the direction and magnitude of trajectories in the phase plane.\n- **Colored trajectories** (red, blue, yellow, etc.) show distinct solution paths converging/diverging around the origin.\n- The **central point** (origin) is an **unstable spiral/saddle focus** due to λ₁ > 0 (repelling) and λ₂ < 0 (attracting) eigenvalues, causing trajectories to spiral outward in some directions and inward in others.\n- The portrait illustrates **asymptotic instability** as time progresses, with trajectories diverging along the unstable manifold (λ₁ > 0).",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:57:03.950597"
+    },
+    "unit4_inference_page09_img08.png": {
+      "filename": "unit4_inference_page09_img08.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img08.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:13.538716",
+      "description": "This image is a **phase portrait** of a system of linear ordinary differential equations (ODEs) with eigenvalues \\(\\lambda_1 > 0\\) and \\(\\lambda_2 < 0\\), illustrating a **saddle point**.\n\nKey visual elements include:\n- **Black arrows** showing vector fields, indicating flow direction.\n- **Colored trajectories** (red, blue, yellow, etc.) converging/diverging along axes, representing stable (toward origin) and unstable (away) directions.\n- The **red \"X\"** marks the saddle point at the origin, where trajectories split into stable (horizontal) and unstable (vertical) manifolds.\n- The **orange axes** highlight the principal directions aligned with eigenvectors.\n\nThis visualizes how trajectories behave near a saddle: some approach (stable manifold), while others diverge (unstable manifold).",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:57:23.182274"
+    },
+    "unit4_inference_page13_img09.png": {
+      "filename": "unit4_inference_page13_img09.png",
+      "unit": "unit4_inference",
+      "page": 13,
+      "path": "outputs/images/unit4_inference_page13_img09.png",
+      "dimensions": {
+        "width": 1540,
+        "height": 1540
+      },
+      "extracted_at": "2026-01-20T19:15:13.680534",
+      "description": "This image is a **vector field plot with streamlines**, illustrating concepts of **stability and asymptotics** in dynamical systems.\n\nThe plot shows trajectories (colored curves) and velocity vectors (arrows) representing the flow of a system in the plane. Key visual elements include:\n- **Spiral sinks** (left and right) indicating stable fixed points where trajectories converge.\n- **Saddle points** (near the center) where trajectories diverge or change direction, highlighting instability.\n- **Streamlines** (colored paths) tracing the system’s long-term behavior, emphasizing asymptotic stability or instability.\n\nThe arrows depict the direction and magnitude of flow, while the streamlines reveal how trajectories evolve over time, crucial for analyzing stability in nonlinear systems.",
+      "type": "table",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:57:41.598510"
+    },
+    "unit4_inference_page18_img10.png": {
+      "filename": "unit4_inference_page18_img10.png",
+      "unit": "unit4_inference",
+      "page": 18,
+      "path": "outputs/images/unit4_inference_page18_img10.png",
+      "dimensions": {
+        "width": 825,
+        "height": 781
+      },
+      "extracted_at": "2026-01-20T19:15:13.706350",
+      "description": "This image is a **graphical illustration of the 4th-order Runge-Kutta (RK4) method**, a numerical technique for solving ordinary differential equations (ODEs). It depicts the iterative process for approximating the solution \\( y(t) \\) over a time step \\( h \\), starting from \\( (t_0, y_0) \\).\n\nKey visual elements include:\n- The **true solution curve** \\( y(t) \\) (blue line).\n- **Four slope estimates** (\\( k_1, k_2, k_3, k_4 \\)) shown as red arrows, calculated at intermediate points.\n- Intermediate points (e.g., \\( y_0 + \\frac{hk_1}{2} \\)) marked with dashed lines, representing weighted averages of slopes.\n- The final updated point \\( (t_1, y_1) \\) (green dot) derived from the weighted combination of slopes, advancing the solution to \\( t_0 + h \\).\n\nThis visually explains how RK4 combines multiple slope approximations for higher accuracy.",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:57:50.128918"
+    },
+    "unit4_inference_page40_img11.png": {
+      "filename": "unit4_inference_page40_img11.png",
+      "unit": "unit4_inference",
+      "page": 40,
+      "path": "outputs/images/unit4_inference_page40_img11.png",
+      "dimensions": {
+        "width": 640,
+        "height": 480
+      },
+      "extracted_at": "2026-01-20T19:15:13.719973",
+      "description": "This image is a **sample path plot** of a stochastic differential equation (SDE) illustrating the dynamics of \\( dX(t) = \\mu dt + \\sigma dW(t) \\). The graph shows a time series of \\( X(t) \\) over \\( t \\in [0, 1] \\), where \\( \\mu = 1.0 \\) (drift) and \\( \\sigma = 0.5 \\) (diffusion). The plot highlights the **linear drift** (smooth upward trend) combined with **stochastic fluctuations** (noise from the Wiener process \\( W(t) \\)), demonstrating how \\( X(t) \\) evolves as a normally distributed random variable with mean \\( \\mu t \\) and variance \\( \\sigma^2 t \\). The jagged path reflects increasing volatility over time.",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:57:56.254555"
+    },
+    "unit4_inference_page45_img12.png": {
+      "filename": "unit4_inference_page45_img12.png",
+      "unit": "unit4_inference",
+      "page": 45,
+      "path": "outputs/images/unit4_inference_page45_img12.png",
+      "dimensions": {
+        "width": 566,
+        "height": 389
+      },
+      "extracted_at": "2026-01-20T19:15:13.735870",
+      "description": "This image consists of two **vector field diagrams** comparing **Residual Networks (ResNets)** and **Neural Ordinary Differential Equations (ODE) Networks**.\n\nThe **Residual Network** (left) depicts discrete, step-wise updates via residual connections (black arrows) between layers, illustrating the standard Euler-like update \\( x_{l+1} = x_l + f(x_l, \\theta_l) \\). The arrows show fixed jumps between fixed depths.\n\nThe **ODE Network** (right) visualizes continuous dynamics, where the flow (colored arrows) represents the smooth ODE solution \\( \\frac{dx}{dt} = f(x,t,\\theta) \\) over time \\( t \\). Black dots mark discrete evaluation points, approximating the integral \\( x(t+\\Delta t) = x(t) + \\int f(x(\\tau),\\tau,\\theta)d\\tau \\), emphasizing continuous evolution rather than discrete steps.",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:58:02.336444"
+    },
+    "unit4_inference_page46_img13.png": {
+      "filename": "unit4_inference_page46_img13.png",
+      "unit": "unit4_inference",
+      "page": 46,
+      "path": "outputs/images/unit4_inference_page46_img13.png",
+      "dimensions": {
+        "width": 517,
+        "height": 317
+      },
+      "extracted_at": "2026-01-20T19:15:13.743306",
+      "description": "This image is a **Python code snippet** illustrating the numerical solution of an **Ordinary Differential Equation (ODE)** using `scipy.integrate.solve_ivp`, central to the Neural ODE concept on the lecture page.\n\nKey elements:\n- **Time grid setup**: `t = np.linspace(0, T, 200)` defines discrete time points for integration.\n- **ODE solver call**: `solve_ivp` computes the ODE solution from initial condition `y0=u0` over time span `[t[0], t[-1]]`, using the Radau method for high accuracy.\n- **Function `f`**: Implicitly referenced (not shown) as the ODE’s dynamics, parameterized by `θ`.\n- **Integration**: The code implements the integral in the equation \\( \\int_{t_0}^{t_1} f(z(t), t, θ) dt \\), approximating the ODE forward pass described in the lecture’s notation \\( L(z(t_1)) = L(z(t_0) + \\int f(z(t), t, θ) dt) \\).",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:58:09.271316"
+    },
+    "unit4_inference_page53_img14.png": {
+      "filename": "unit4_inference_page53_img14.png",
+      "unit": "unit4_inference",
+      "page": 53,
+      "path": "outputs/images/unit4_inference_page53_img14.png",
+      "dimensions": {
+        "width": 915,
+        "height": 187
+      },
+      "extracted_at": "2026-01-20T19:15:13.752670",
+      "description": "This image is a **forward and reverse process diagram** for a diffusion model, illustrating the **denoising trajectory** via probabilistic flows.\n\nThe diagram shows a **Markov chain** where noisy data (e.g., a blurred face at \\( \\mathbf{x}_T \\)) progressively reverts to a clean sample (\\( \\mathbf{x}_0 \\)) through intermediate steps (\\( \\mathbf{x}_t \\to \\mathbf{x}_{t-1} \\)). The **forward process** (\\( q(\\mathbf{x}_t|\\mathbf{x}_{t-1}) \\)) adds Gaussian noise (dashed arrow), while the **learned reverse process** (\\( p_\\theta(\\mathbf{x}_{t-1}|\\mathbf{x}_t) \\)) denoises it (solid arrow). ResNets/Transformers parameterize \\( p_\\theta \\) to approximate the reverse ODE/SDE dynamics, mirroring the Langevin diffusion framework described on the page.",
+      "type": "diagram",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:58:15.278434"
+    },
+    "unit5_learning_page01_img01.png": {
+      "filename": "unit5_learning_page01_img01.png",
+      "unit": "unit5_learning",
+      "page": 1,
+      "path": "outputs/images/unit5_learning_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:13.865194",
+      "description": "This image is a **logo** for **Johannes Kepler University Linz**, featuring a stylized, modern typographic design. While not directly illustrating *diffusion models*, it subtly ties into the academic context of the lecture by representing the institution hosting the course on advanced machine learning techniques.\n\nThe logo’s **bold, geometric \"J\" and \"U\" shapes** evoke clarity and precision—key themes in diffusion models, which rely on structured probabilistic processes. The clean, minimalist aesthetic aligns with the technical rigor of the topic, emphasizing innovation and systematic progression, akin to how diffusion models iteratively refine data through noise removal. The stark contrast and symmetry also mirror the mathematical foundations of these models.",
+      "type": "graph",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:58:24.429481"
+    },
+    "unit5_learning_page01_img02.png": {
+      "filename": "unit5_learning_page01_img02.png",
+      "unit": "unit5_learning",
+      "page": 1,
+      "path": "outputs/images/unit5_learning_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:13.940543",
+      "description": "This image is a **logo-style graphic** for the *Institute for Machine Learning* (IML), featuring a stylized, minimalist design. The key visual elements include three bold, black, uppercase \"J\" letters arranged in a triangular formation with a horizontal bar connecting the middle \"J\" to the top vertex, forming a dynamic, abstract shape. Below the logo, the text reads *\"Institute for Machine Learning\"* in a clean, sans-serif font.\n\nFor **Unit 5 on Diffusion Models**, the logo subtly reinforces the institute’s focus on cutting-edge ML research, aligning with advanced topics like generative models (e.g., diffusion processes). The sharp, modern typography and geometric precision evoke innovation and precision—hallmarks of machine learning techniques. The contrast and clarity of the design mirror the clarity and structure of diffusion models, which iteratively refine data through probabilistic steps.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:58:35.538096"
+    },
+    "unit5_learning_page04_img03.png": {
+      "filename": "unit5_learning_page04_img03.png",
+      "unit": "unit5_learning",
+      "page": 4,
+      "path": "outputs/images/unit5_learning_page04_img03.png",
+      "dimensions": {
+        "width": 809,
+        "height": 337
+      },
+      "extracted_at": "2026-01-20T19:15:13.952976",
+      "description": "This image is a **directed graphical model** illustrating a **Markovian Hierarchical Variational Autoencoder (HVAE)**. It depicts a generative process where observed data **\\(x\\)** is conditioned on latent variables \\(z_1, z_2, ..., z_T\\) arranged in a chain. The arrows labeled **\\(p(z_{i}|z_{i+1})\\)** represent the probabilistic transitions from higher-level (more abstract) latent variables to lower-level ones, while **\\(p(x|z_1)\\)** shows the final generation of data from the lowest latent layer. The backward arrows labeled **\\(q(z_i|z_{i-1})\\)** indicate the inference process, modeling dependencies for variational inference. This structure emphasizes hierarchical abstraction and Markovian dependencies in latent spaces.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:58:41.158729"
+    },
+    "unit5_learning_page08_img04.png": {
+      "filename": "unit5_learning_page08_img04.png",
+      "unit": "unit5_learning",
+      "page": 8,
+      "path": "outputs/images/unit5_learning_page08_img04.png",
+      "dimensions": {
+        "width": 805,
+        "height": 337
+      },
+      "extracted_at": "2026-01-20T19:15:13.967055",
+      "description": "This image is a **diagram** illustrating the diffusion process through the lens of Variational Autoencoders (VAEs). It depicts a **forward and backward transition model** in a diffusion framework.\n\nThe diagram shows a sequence of latent variables \\(x_0\\) to \\(x_T\\), where \\(x_0\\) is the input image and \\(x_T\\) is white noise. The **forward process** (encoder-like) transitions from \\(x_{t-1}\\) to \\(x_t\\) by gradually adding noise, while the **backward process** (decoder-like) aims to reverse this by denoising \\(x_t\\) to reconstruct \\(x_{t-1}\\). Encoders and decoders are visually represented by trapezoidal blocks, highlighting their roles in encoding noisy latent states and decoding them back.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:58:46.854280"
+    },
+    "unit5_learning_page09_img05.png": {
+      "filename": "unit5_learning_page09_img05.png",
+      "unit": "unit5_learning",
+      "page": 9,
+      "path": "outputs/images/unit5_learning_page09_img05.png",
+      "dimensions": {
+        "width": 644,
+        "height": 250
+      },
+      "extracted_at": "2026-01-20T19:15:13.975206",
+      "description": "This image is a **directed graphical model diagram** illustrating transition dynamics in a sequential latent variable model (e.g., a Variational Autoencoder for sequences). It highlights the **forward and backward transition distributions** between latent states \\( \\mathbf{x}_{t-1} \\), \\( \\mathbf{x}_t \\), and \\( \\mathbf{x}_{t+1} \\).\n\nThe **forward transition** \\( p(\\mathbf{x}_t|\\mathbf{x}_{t-1}) \\) (encoder) is **unknown** and approximated by a Gaussian \\( q_\\phi(\\mathbf{x}_t|\\mathbf{x}_{t-1}) \\). The **backward transition** \\( p(\\mathbf{x}_t|\\mathbf{x}_{t+1}) \\) (decoder) is also approximated by a Gaussian \\( p_\\theta(\\mathbf{x}_t|\\mathbf{x}_{t+1}) \\), though the true distribution \\( p(\\mathbf{x}_{t+1}|\\mathbf{x}_t) \\) remains unknown. Arrows depict conditional dependencies, emphasizing the learned approximations.",
+      "type": "graph",
+      "contains_math": true,
+      "described_at": "2026-01-20T19:58:53.352018"
+    },
+    "unit5_learning_page32_img06.png": {
+      "filename": "unit5_learning_page32_img06.png",
+      "unit": "unit5_learning",
+      "page": 32,
+      "path": "outputs/images/unit5_learning_page32_img06.png",
+      "dimensions": {
+        "width": 945,
+        "height": 168
+      },
+      "extracted_at": "2026-01-20T19:15:13.984217",
+      "description": "This image is a **diagram** illustrating the generalization of Denoising Diffusion Probabilistic Models (DDPMs) with a **non-Markovian forward process**. It contrasts the standard Markovian DDPM (left) with a non-Markovian variant (right).\n\nIn the left diagram, each state \\( x_t \\) depends only on the previous state \\( x_{t+1} \\) via \\( p_\\theta \\), while the backward process \\( q(x_t | x_{t+1}) \\) is Markovian. The right diagram introduces **conditional dependencies** on the target \\( x_0 \\), showing \\( q(x_t | x_{t+1}, x_0) \\), where the forward process explicitly accounts for \\( x_0 \\) to modulate stochasticity (controlled by \\( \\sigma_t \\)). This reflects Song et al.’s approach to enhance diffusion by leveraging non-Markovian transitions.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:58:59.398009"
+    },
+    "unit6_temporal_page01_img01.png": {
+      "filename": "unit6_temporal_page01_img01.png",
+      "unit": "unit6_temporal",
+      "page": 1,
+      "path": "outputs/images/unit6_temporal_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:14.085654",
+      "description": "This image is the logo of **Johannes Kepler University Linz (JKU)**, featuring a stylized, minimalist design. While not directly depicting \"Flow Matching\" concepts from the lecture, the logo subtly aligns with the university’s identity as a hub for advanced research, including machine learning.\n\nThe **key visual elements** include:\n- **Three bold, black \"J\" letters** forming a dynamic, interconnected shape resembling a **flow network or vector field**—symbolizing the *directional transitions* central to flow-based generative models.\n- The **horizontal bar** beneath the letters may evoke a **baseline or reference state**, akin to the initial distribution in flow matching.\n- The **clean, modern typography** reinforces the university’s focus on precision and innovation, mirroring the technical rigor of advanced ML techniques like flow matching.\n\nThe logo’s abstract flow-like structure subtly ties into the lecture’s theme of modeling data evolution through continuous transformations.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:59:10.495128"
+    },
+    "unit6_temporal_page01_img02.png": {
+      "filename": "unit6_temporal_page01_img02.png",
+      "unit": "unit6_temporal",
+      "page": 1,
+      "path": "outputs/images/unit6_temporal_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:14.161613",
+      "description": "This image is a **logo-style graphic** for the *Institute for Machine Learning* (IML), featuring stylized, bold typography to convey a modern and dynamic aesthetic. The key visual elements include:\n\n1. **Three bold \"J\" letters** forming a **flow-like structure**—the middle \"J\" splits into an inverted \"V\" shape, symbolizing **transformation or progression**, which aligns with *Flow Matching*, a concept in machine learning where data transitions between distributions (e.g., forward SDEs to reverse processes).\n2. **A horizontal bar** beneath the \"V\" suggests **intermediary steps or coupling**—a core idea in flow-based generative models.\n3. The text *\"Institute for Machine Learning\"* reinforces the academic focus on advanced techniques, subtly tying the logo’s fluidity to the lecture’s theme of **continuous data transformations** in flow-based generative models.\n\nThe design visually encapsulates the **dynamic, process-driven nature** of flow matching.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:59:23.118593"
+    },
+    "unit6_temporal_page06_img03.png": {
+      "filename": "unit6_temporal_page06_img03.png",
+      "unit": "unit6_temporal",
+      "page": 6,
+      "path": "outputs/images/unit6_temporal_page06_img03.png",
+      "dimensions": {
+        "width": 547,
+        "height": 265
+      },
+      "extracted_at": "2026-01-20T19:15:14.169450",
+      "description": "This image is a **diagram** illustrating **score-based generative modeling via Stochastic Differential Equations (SDEs)**. It contrasts two SDE processes: the **forward SDE** (top, data → noise) and the **reverse SDE** (bottom, noise → data).\n\nThe **forward SDE** (top) shows data **x(0)** evolving into noise **x(T)** via the equation \\(dx = f(x,t)dt + g(t)dw\\), depicting gradual corruption of data through noise. The **reverse SDE** (bottom) uses a learned score function \\(\\nabla_x \\log p_t(x)\\) to reverse this process, generating data from noise via \\(dx = [f(x,t) - g^2(t)\\nabla_x \\log p_t(x)]dt + g(t)dw\\). The visual progression of an image (e.g., a dog) degrading into noise and then being reconstructed highlights the core idea of denoising via score-based modeling.",
+      "type": "formula",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:59:29.338256"
+    },
+    "unit6_temporal_page08_img04.png": {
+      "filename": "unit6_temporal_page08_img04.png",
+      "unit": "unit6_temporal",
+      "page": 8,
+      "path": "outputs/images/unit6_temporal_page08_img04.png",
+      "dimensions": {
+        "width": 1192,
+        "height": 287
+      },
+      "extracted_at": "2026-01-20T19:15:14.179446",
+      "description": "This image is a set of contour diagrams illustrating **Flow Matching**, a machine learning technique for transforming data distributions. It consists of four panels labeled (a) to (d):\n\n1. **(a) Data**: Shows source distribution \\( p \\) (left) and target distribution \\( q \\) (right), with samples \\( X_0 \\) and \\( X_1 \\).\n2. **(b) Path Design**: Depicts a continuous path \\( p_t \\) between \\( p \\) (at \\( t=0 \\)) and \\( q \\) (at \\( t=1 \\)), guiding the transformation.\n3. **(c) Training**: Introduces a velocity field \\( u_t(x) \\) that defines the direction and speed of movement along the path \\( p_t \\) to transition from \\( p \\) to \\( q \\).\n4. **(d) Sampling**: Demonstrates how new samples are generated by integrating the learned velocity field \\( u_t(x) \\) over time, moving \\( X_0 \\) toward \\( X_1 \\).\n\nThe diagrams emphasize learning a time-dependent flow to map \\( p \\) to \\( q \\).",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:59:37.762592"
+    },
+    "unit6_temporal_page15_img05.png": {
+      "filename": "unit6_temporal_page15_img05.png",
+      "unit": "unit6_temporal",
+      "page": 15,
+      "path": "outputs/images/unit6_temporal_page15_img05.png",
+      "dimensions": {
+        "width": 1356,
+        "height": 344
+      },
+      "extracted_at": "2026-01-20T19:15:14.192502",
+      "description": "This image consists of four contour plots illustrating key concepts in **Conditional Flow Matching (CFM)**. Each subfigure visualizes probability paths and velocity fields:\n\n**(a)** Shows the *conditional probability path* \\( p_t(\\cdot|x_1) \\), depicting how the distribution evolves from \\( p \\) to \\( x_1 \\) over time \\( t \\).\n**(b)** Displays the *marginal probability path* \\( p_t(x) \\), showing the overall transition from \\( p \\) to \\( q \\) without conditioning.\n**(c)** Illustrates the *conditional velocity field* \\( u_t(x|x_1) \\), where arrows indicate the direction and magnitude of flow from \\( x \\) to \\( x_1 \\) at time \\( t \\).\n**(d)** Depicts the *marginal velocity field* \\( u_t(x) \\), representing the unconditional flow from \\( p \\) to \\( q \\).\n\nThe plots emphasize how the conditional CFM loss compares learned velocity fields (\\( u_\\theta \\)) to the true conditional dynamics \\( u_t(x|x_1) \\).",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:59:46.295364"
+    },
+    "unit7_advanced_page01_img01.png": {
+      "filename": "unit7_advanced_page01_img01.png",
+      "unit": "unit7_advanced",
+      "page": 1,
+      "path": "outputs/images/unit7_advanced_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:14.289845",
+      "description": "This image is a **logo** for **Johannes Kepler University Linz (JKU)**, featuring a stylized, modern typographic design. While not directly illustrating the lecture content on diffusion models, it subtly ties into the academic context of the unit by representing institutional credibility and innovation—key themes in advanced machine learning research.\n\nThe logo’s **bold, geometric \"J\" and \"U\" letters** with a dynamic, intersecting \"X\" shape evoke **connectivity and integration**, metaphorically aligning with diffusion models’ unified theoretical frameworks. The clean, minimalist aesthetic reflects the precision and structured approach often emphasized in technical lectures like *Unit 7*. The stark contrast and symmetry underscore clarity and rigor, values central to both academic branding and cutting-edge ML methodologies.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T19:59:56.231270"
+    },
+    "unit7_advanced_page01_img02.png": {
+      "filename": "unit7_advanced_page01_img02.png",
+      "unit": "unit7_advanced",
+      "page": 1,
+      "path": "outputs/images/unit7_advanced_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:14.364548",
+      "description": "This image is a **logo-style graphic** combining typography and geometric abstraction to represent the **Institute for Machine Learning (IMAGINE)**. While not directly depicting content from *Unit 7* on diffusion models, its bold, modern design aligns with the institute’s focus on cutting-edge AI research.\n\nThe **key visual elements**—the stylized \"J\" forming a dynamic \"V\" and horizontal bar—symbolize **interconnectedness and transformation**, mirroring diffusion models' iterative processes (e.g., denoising or gradient flows). The clean, minimalist aesthetic reflects the precision and structure of advanced machine learning techniques, reinforcing the institute’s emphasis on clarity and innovation in theoretical frameworks. The typography’s sharp contrast underscores the rigorous, mathematical nature of the lecture’s unified diffusion model perspective.",
+      "type": "graph",
+      "contains_math": true,
+      "described_at": "2026-01-20T20:00:07.730421"
+    },
+    "unit8_applications_page01_img01.png": {
+      "filename": "unit8_applications_page01_img01.png",
+      "unit": "unit8_applications",
+      "page": 1,
+      "path": "outputs/images/unit8_applications_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:14.475066",
+      "description": "This image is a **logo** for **Johannes Kepler University Linz**, featuring a stylized, minimalist design. While not directly illustrating neural fields, it symbolizes the university’s association with advanced research—including machine learning—highlighted in **Unit 8** of the lecture.\n\nThe logo’s **bold, geometric \"J\" and \"U\" letters** with a dynamic, intersecting bar evoke **structure and connectivity**, mirroring the abstract yet interconnected nature of neural fields (e.g., implicit neural representations or coordinate-based networks). The clean typography reinforces clarity and precision, aligning with the rigorous study of advanced ML techniques. The stark contrast and modern aesthetic underscore innovation, a core theme in neural field research.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T20:00:17.737692"
+    },
+    "unit8_applications_page01_img02.png": {
+      "filename": "unit8_applications_page01_img02.png",
+      "unit": "unit8_applications",
+      "page": 1,
+      "path": "outputs/images/unit8_applications_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:14.551327",
+      "description": "This image is a **logo-style graphic** combining typography and abstract geometric design. It visually represents the **Institute for Machine Learning** with a focus on the acronym **\"JU\"** (likely referencing Johannes Kepler University Linz, where the institute is based).\n\nFor **Unit 8 on Neural Fields**, the logo subtly ties into the concept through its **modular, interconnected structure**:\n- The **two \"J\"s forming a \"U\"** symbolizes **continuous, smooth transitions**—key in neural fields (e.g., implicit neural representations like MLP-based fields).\n- The **horizontal bar** suggests **interpolation or connectivity**, akin to how neural fields encode spatial data as continuous functions.\n- The **minimalist, mathematical aesthetic** aligns with the formal, function-based nature of neural fields in computer graphics or representation learning.\n\nThe design implies **unified, high-dimensional mappings**—central to neural fields.",
+      "type": "graph",
+      "contains_math": true,
+      "described_at": "2026-01-20T20:00:29.844796"
+    },
+    "unit8_applications_page06_img03.png": {
+      "filename": "unit8_applications_page06_img03.png",
+      "unit": "unit8_applications",
+      "page": 6,
+      "path": "outputs/images/unit8_applications_page06_img03.png",
+      "dimensions": {
+        "width": 2023,
+        "height": 647
+      },
+      "extracted_at": "2026-01-20T19:15:14.636580",
+      "description": "This image illustrates four key 3D geometry representations used in advanced machine learning techniques:\n\n1. **Voxel Representation (top-left)**: A grid-based approach where space is divided into a 3D voxel grid (binary occupancy).\n2. **Point Cloud Representation (top-middle)**: A sparse set of 3D points (blue dots) capturing surface geometry without structure.\n3. **Occupancy Neural Field (top-right)**: A learned implicit function \\( f_\\theta(p) = \\tau \\) distinguishing occupied (red squares) from unoccupied (blue dots) space via a threshold \\( \\tau \\).\n4. **Mesh Representation (bottom)**: A continuous 3D surface (bench) defined by triangles, shown in wireframe (left) and solid (right) forms.\n\nThe progression highlights structured-to-implicit-to-explicit geometry encoding.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T20:00:38.655290"
+    },
+    "unit8_applications_page09_img04.png": {
+      "filename": "unit8_applications_page09_img04.png",
+      "unit": "unit8_applications",
+      "page": 9,
+      "path": "outputs/images/unit8_applications_page09_img04.png",
+      "dimensions": {
+        "width": 690,
+        "height": 508
+      },
+      "extracted_at": "2026-01-20T19:15:14.649756",
+      "description": "This image is a **diagram** illustrating the **Marching Cubes algorithm** for surface extraction from a 3D scalar field. It shows a **step-by-step process**:\n\n1. **Mark voxels** – Voxels intersecting the isosurface (red) are identified.\n2. **Subdivide voxels** – The grid is refined iteratively (*N times*) for accuracy.\n3. **Evaluate network** – Interpolation determines surface positions within each voxel.\n4. **Marching Cubes** – Triangulation connects vertices to form a mesh.\n5. **Simplify mesh** – The resulting mesh is cleaned up.\n6. **Refine using gradients** – Optional gradient-based smoothing improves accuracy.\n\nThe diagram emphasizes converting implicit data (occupancy fields) into an explicit surface mesh.",
+      "type": "algorithm",
+      "contains_math": false,
+      "described_at": "2026-01-20T20:00:44.959885"
+    },
+    "unit8_applications_page13_img05.png": {
+      "filename": "unit8_applications_page13_img05.png",
+      "unit": "unit8_applications",
+      "page": 13,
+      "path": "outputs/images/unit8_applications_page13_img05.png",
+      "dimensions": {
+        "width": 2852,
+        "height": 696
+      },
+      "extracted_at": "2026-01-20T19:15:14.717648",
+      "description": "This image is a **diagram** illustrating the workflow of **Neural Radiance Fields (NeRF)** for 3D scene reconstruction. It consists of three key stages:\n\n1. **Input Images**: A grid of 2D photographs depicting a drum set from various angles.\n2. **Optimize NeRF**: A volumetric representation (NeRF) is optimized using these images, visualized as a 3D scene with rays (small cubes) probing the space to capture density and color information.\n3. **Render New Views**: The trained NeRF generates novel, photorealistic views of the drum set from unseen perspectives, demonstrating its ability to synthesize realistic 3D scenes from 2D inputs.\n\nThis process highlights NeRF’s capability to learn continuous volumetric functions for accurate 3D reconstruction and rendering.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T20:00:52.324725"
+    },
+    "unit8_applications_page14_img06.png": {
+      "filename": "unit8_applications_page14_img06.png",
+      "unit": "unit8_applications",
+      "page": 14,
+      "path": "outputs/images/unit8_applications_page14_img06.png",
+      "dimensions": {
+        "width": 1600,
+        "height": 725
+      },
+      "extracted_at": "2026-01-20T19:15:14.742697",
+      "description": "This image is a schematic diagram illustrating scene representation using neural networks in advanced machine learning techniques.\n\nThe top portion shows a traditional 3D spatial array (x, y, z) with volumetric data (e.g., RGB colors and absorption coefficient, σ) at each point. The bottom contrasts this with a neural network approach: an input of spatial coordinates (x, y, z) combined with orientation parameters (θ, φ) is fed through a neural network (depicted by blue bars) to output RGB values and absorption (r, g, b, σ). This highlights how neural networks replace explicit volumetric arrays, enabling efficient scene rendering by learning mappings from coordinates to appearance properties.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T20:01:01.676349"
+    },
+    "unit8_applications_page15_img07.png": {
+      "filename": "unit8_applications_page15_img07.png",
+      "unit": "unit8_applications",
+      "page": 15,
+      "path": "outputs/images/unit8_applications_page15_img07.png",
+      "dimensions": {
+        "width": 1600,
+        "height": 583
+      },
+      "extracted_at": "2026-01-20T19:15:14.770643",
+      "description": "This image is a schematic diagram illustrating **ray tracing** in computer graphics. It depicts how light rays interact with a 3D scene to render images realistically.\n\nThe diagram shows two rays (Ray 1 and Ray 2) originating from a camera viewpoint through a pixel grid, intersecting with a 3D bulldozer model. Each ray traces a path, bouncing or refracting off surfaces (represented by black and colored dots) before reaching the final destination. The transformation function \\( F_\\Omega \\) symbolizes the mapping of these rays through the scene, simulating light behavior to compute pixel colors. This process highlights how ray tracing calculates reflections, shadows, and lighting for accurate visual rendering.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T20:01:10.273475"
+    },
+    "unit8_applications_page16_img08.png": {
+      "filename": "unit8_applications_page16_img08.png",
+      "unit": "unit8_applications",
+      "page": 16,
+      "path": "outputs/images/unit8_applications_page16_img08.png",
+      "dimensions": {
+        "width": 932,
+        "height": 810
+      },
+      "extracted_at": "2026-01-20T19:15:14.789311",
+      "description": "This image is a **diagram** illustrating **volumetric rendering** in computer graphics. It depicts a **camera emitting a ray** through a **3D volumetric cloud**, simulating how rendered colors are computed.\n\nKey elements include:\n- A **ray** originating from the camera, passing through the 3D volume.\n- **Sampling points** along the ray (marked as \\( t_1, T_i, t_N \\)), representing discrete intervals where density/color is evaluated.\n- **\\( \\alpha_i \\)** denotes the **opacity** (or alpha) at each sample, used in volumetric integration.\n- The **integrated color** \\( C \\) of the ray is derived by summing contributions (e.g., via the **alpha compositing** technique) across these points, capturing the cloud’s appearance from the camera’s perspective.\n\nThis visualizes how volumetric rendering computes transparency and shading along a ray.",
+      "type": "graph",
+      "contains_math": false,
+      "described_at": "2026-01-20T20:01:19.203595"
+    },
+    "unit8_applications_page18_img09.png": {
+      "filename": "unit8_applications_page18_img09.png",
+      "unit": "unit8_applications",
+      "page": 18,
+      "path": "outputs/images/unit8_applications_page18_img09.png",
+      "dimensions": {
+        "width": 1600,
+        "height": 526
+      },
+      "extracted_at": "2026-01-20T19:15:14.817772",
+      "description": "This image is a schematic diagram illustrating **Neural Radiance Fields (NeRF) ray-marching and optimization**. It depicts two rays (Ray1 and Ray2) originating from known camera positions, passing through 3D space to sample points defined by coordinates (x, y, z) and viewing angles (θ, φ). At each sample, the neural network predicts density (σ) and color (c). The rendered image (Cp) is compared to the ground-truth image to compute photometric loss, optimizing σ and c to minimize the difference. Key visual elements include camera rays, sampled points, and the neural network processing these inputs.",
+      "type": "diagram",
+      "contains_math": false,
+      "described_at": "2026-01-20T20:01:27.097228"
+    }
+  }
+}

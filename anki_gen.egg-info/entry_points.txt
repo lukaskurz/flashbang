@@ -1,0 +1,2 @@
+[console_scripts]
+anki-gen = src.cli.main:cli

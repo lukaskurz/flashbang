@@ -1,0 +1,937 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-01-20T19:50:45.965806",
+  "ollama_model": "ministral-3:8b",
+  "images": {
+    "test_unit1_page01_img01.png": {
+      "filename": "test_unit1_page01_img01.png",
+      "unit": "test_unit1",
+      "page": 1,
+      "path": "outputs/images/test_unit1_page01_img01.png",
+      "dimensions": {
+        "width": 200,
+        "height": 100
+      },
+      "extracted_at": "2026-01-20T19:09:39.784673",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "test_unit1_page01_img02.png": {
+      "filename": "test_unit1_page01_img02.png",
+      "unit": "test_unit1",
+      "page": 1,
+      "path": "outputs/images/test_unit1_page01_img02.png",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "extracted_at": "2026-01-20T19:09:39.784675",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit0_intro_page01_img01.png": {
+      "filename": "unit0_intro_page01_img01.png",
+      "unit": "unit0_intro",
+      "page": 1,
+      "path": "outputs/images/unit0_intro_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:11.514237",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit0_intro_page01_img02.png": {
+      "filename": "unit0_intro_page01_img02.png",
+      "unit": "unit0_intro",
+      "page": 1,
+      "path": "outputs/images/unit0_intro_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:11.591990",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit1_fundamentals_page01_img01.png": {
+      "filename": "unit1_fundamentals_page01_img01.png",
+      "unit": "unit1_fundamentals",
+      "page": 1,
+      "path": "outputs/images/unit1_fundamentals_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:11.697545",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit1_fundamentals_page01_img02.png": {
+      "filename": "unit1_fundamentals_page01_img02.png",
+      "unit": "unit1_fundamentals",
+      "page": 1,
+      "path": "outputs/images/unit1_fundamentals_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:11.773133",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit2_concepts_page01_img01.png": {
+      "filename": "unit2_concepts_page01_img01.png",
+      "unit": "unit2_concepts",
+      "page": 1,
+      "path": "outputs/images/unit2_concepts_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:11.879707",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit2_concepts_page01_img02.png": {
+      "filename": "unit2_concepts_page01_img02.png",
+      "unit": "unit2_concepts",
+      "page": 1,
+      "path": "outputs/images/unit2_concepts_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:11.954080",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit2_concepts_page12_img03.png": {
+      "filename": "unit2_concepts_page12_img03.png",
+      "unit": "unit2_concepts",
+      "page": 12,
+      "path": "outputs/images/unit2_concepts_page12_img03.png",
+      "dimensions": {
+        "width": 755,
+        "height": 670
+      },
+      "extracted_at": "2026-01-20T19:15:11.985219",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit2_concepts_page13_img04.png": {
+      "filename": "unit2_concepts_page13_img04.png",
+      "unit": "unit2_concepts",
+      "page": 13,
+      "path": "outputs/images/unit2_concepts_page13_img04.png",
+      "dimensions": {
+        "width": 840,
+        "height": 438
+      },
+      "extracted_at": "2026-01-20T19:15:12.001159",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit2_concepts_page19_img05.png": {
+      "filename": "unit2_concepts_page19_img05.png",
+      "unit": "unit2_concepts",
+      "page": 19,
+      "path": "outputs/images/unit2_concepts_page19_img05.png",
+      "dimensions": {
+        "width": 685,
+        "height": 280
+      },
+      "extracted_at": "2026-01-20T19:15:12.018034",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit2_concepts_page24_img06.png": {
+      "filename": "unit2_concepts_page24_img06.png",
+      "unit": "unit2_concepts",
+      "page": 24,
+      "path": "outputs/images/unit2_concepts_page24_img06.png",
+      "dimensions": {
+        "width": 1490,
+        "height": 588
+      },
+      "extracted_at": "2026-01-20T19:15:12.051747",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page01_img01.png": {
+      "filename": "unit3_bayesian_networks_page01_img01.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 1,
+      "path": "outputs/images/unit3_bayesian_networks_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:12.161240",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page01_img02.png": {
+      "filename": "unit3_bayesian_networks_page01_img02.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 1,
+      "path": "outputs/images/unit3_bayesian_networks_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:12.237713",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page03_img03.png": {
+      "filename": "unit3_bayesian_networks_page03_img03.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 3,
+      "path": "outputs/images/unit3_bayesian_networks_page03_img03.png",
+      "dimensions": {
+        "width": 460,
+        "height": 183
+      },
+      "extracted_at": "2026-01-20T19:15:12.243122",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page05_img04.png": {
+      "filename": "unit3_bayesian_networks_page05_img04.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 5,
+      "path": "outputs/images/unit3_bayesian_networks_page05_img04.png",
+      "dimensions": {
+        "width": 768,
+        "height": 401
+      },
+      "extracted_at": "2026-01-20T19:15:12.294239",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page08_img05.png": {
+      "filename": "unit3_bayesian_networks_page08_img05.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 8,
+      "path": "outputs/images/unit3_bayesian_networks_page08_img05.png",
+      "dimensions": {
+        "width": 678,
+        "height": 237
+      },
+      "extracted_at": "2026-01-20T19:15:12.301352",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page12_img06.png": {
+      "filename": "unit3_bayesian_networks_page12_img06.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 12,
+      "path": "outputs/images/unit3_bayesian_networks_page12_img06.png",
+      "dimensions": {
+        "width": 607,
+        "height": 280
+      },
+      "extracted_at": "2026-01-20T19:15:12.308781",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page27_img07.png": {
+      "filename": "unit3_bayesian_networks_page27_img07.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 27,
+      "path": "outputs/images/unit3_bayesian_networks_page27_img07.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 395
+      },
+      "extracted_at": "2026-01-20T19:15:12.319526",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page27_img08.png": {
+      "filename": "unit3_bayesian_networks_page27_img08.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 27,
+      "path": "outputs/images/unit3_bayesian_networks_page27_img08.png",
+      "dimensions": {
+        "width": 1206,
+        "height": 880
+      },
+      "extracted_at": "2026-01-20T19:15:12.346443",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page28_img09.png": {
+      "filename": "unit3_bayesian_networks_page28_img09.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 28,
+      "path": "outputs/images/unit3_bayesian_networks_page28_img09.png",
+      "dimensions": {
+        "width": 798,
+        "height": 1276
+      },
+      "extracted_at": "2026-01-20T19:15:12.372503",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page29_img10.png": {
+      "filename": "unit3_bayesian_networks_page29_img10.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 29,
+      "path": "outputs/images/unit3_bayesian_networks_page29_img10.png",
+      "dimensions": {
+        "width": 1212,
+        "height": 676
+      },
+      "extracted_at": "2026-01-20T19:15:12.386893",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page30_img11.png": {
+      "filename": "unit3_bayesian_networks_page30_img11.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 30,
+      "path": "outputs/images/unit3_bayesian_networks_page30_img11.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 778
+      },
+      "extracted_at": "2026-01-20T19:15:12.413867",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page31_img12.png": {
+      "filename": "unit3_bayesian_networks_page31_img12.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 31,
+      "path": "outputs/images/unit3_bayesian_networks_page31_img12.png",
+      "dimensions": {
+        "width": 1486,
+        "height": 1038
+      },
+      "extracted_at": "2026-01-20T19:15:12.446672",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page31_img13.png": {
+      "filename": "unit3_bayesian_networks_page31_img13.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 31,
+      "path": "outputs/images/unit3_bayesian_networks_page31_img13.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 880
+      },
+      "extracted_at": "2026-01-20T19:15:12.469751",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit3_bayesian_networks_page32_img14.png": {
+      "filename": "unit3_bayesian_networks_page32_img14.png",
+      "unit": "unit3_bayesian_networks",
+      "page": 32,
+      "path": "outputs/images/unit3_bayesian_networks_page32_img14.png",
+      "dimensions": {
+        "width": 809,
+        "height": 337
+      },
+      "extracted_at": "2026-01-20T19:15:12.482366",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page01_img01.png": {
+      "filename": "unit4_inference_page01_img01.png",
+      "unit": "unit4_inference",
+      "page": 1,
+      "path": "outputs/images/unit4_inference_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:12.605729",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page01_img02.png": {
+      "filename": "unit4_inference_page01_img02.png",
+      "unit": "unit4_inference",
+      "page": 1,
+      "path": "outputs/images/unit4_inference_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:12.680184",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page09_img03.png": {
+      "filename": "unit4_inference_page09_img03.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img03.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:12.846044",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page09_img04.png": {
+      "filename": "unit4_inference_page09_img04.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img04.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:12.985081",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page09_img05.png": {
+      "filename": "unit4_inference_page09_img05.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img05.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:13.123584",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page09_img06.png": {
+      "filename": "unit4_inference_page09_img06.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img06.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:13.270209",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page09_img07.png": {
+      "filename": "unit4_inference_page09_img07.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img07.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:13.406691",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page09_img08.png": {
+      "filename": "unit4_inference_page09_img08.png",
+      "unit": "unit4_inference",
+      "page": 9,
+      "path": "outputs/images/unit4_inference_page09_img08.png",
+      "dimensions": {
+        "width": 1571,
+        "height": 1571
+      },
+      "extracted_at": "2026-01-20T19:15:13.538716",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page13_img09.png": {
+      "filename": "unit4_inference_page13_img09.png",
+      "unit": "unit4_inference",
+      "page": 13,
+      "path": "outputs/images/unit4_inference_page13_img09.png",
+      "dimensions": {
+        "width": 1540,
+        "height": 1540
+      },
+      "extracted_at": "2026-01-20T19:15:13.680534",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page18_img10.png": {
+      "filename": "unit4_inference_page18_img10.png",
+      "unit": "unit4_inference",
+      "page": 18,
+      "path": "outputs/images/unit4_inference_page18_img10.png",
+      "dimensions": {
+        "width": 825,
+        "height": 781
+      },
+      "extracted_at": "2026-01-20T19:15:13.706350",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page40_img11.png": {
+      "filename": "unit4_inference_page40_img11.png",
+      "unit": "unit4_inference",
+      "page": 40,
+      "path": "outputs/images/unit4_inference_page40_img11.png",
+      "dimensions": {
+        "width": 640,
+        "height": 480
+      },
+      "extracted_at": "2026-01-20T19:15:13.719973",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page45_img12.png": {
+      "filename": "unit4_inference_page45_img12.png",
+      "unit": "unit4_inference",
+      "page": 45,
+      "path": "outputs/images/unit4_inference_page45_img12.png",
+      "dimensions": {
+        "width": 566,
+        "height": 389
+      },
+      "extracted_at": "2026-01-20T19:15:13.735870",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page46_img13.png": {
+      "filename": "unit4_inference_page46_img13.png",
+      "unit": "unit4_inference",
+      "page": 46,
+      "path": "outputs/images/unit4_inference_page46_img13.png",
+      "dimensions": {
+        "width": 517,
+        "height": 317
+      },
+      "extracted_at": "2026-01-20T19:15:13.743306",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit4_inference_page53_img14.png": {
+      "filename": "unit4_inference_page53_img14.png",
+      "unit": "unit4_inference",
+      "page": 53,
+      "path": "outputs/images/unit4_inference_page53_img14.png",
+      "dimensions": {
+        "width": 915,
+        "height": 187
+      },
+      "extracted_at": "2026-01-20T19:15:13.752670",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit5_learning_page01_img01.png": {
+      "filename": "unit5_learning_page01_img01.png",
+      "unit": "unit5_learning",
+      "page": 1,
+      "path": "outputs/images/unit5_learning_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:13.865194",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit5_learning_page01_img02.png": {
+      "filename": "unit5_learning_page01_img02.png",
+      "unit": "unit5_learning",
+      "page": 1,
+      "path": "outputs/images/unit5_learning_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:13.940543",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit5_learning_page04_img03.png": {
+      "filename": "unit5_learning_page04_img03.png",
+      "unit": "unit5_learning",
+      "page": 4,
+      "path": "outputs/images/unit5_learning_page04_img03.png",
+      "dimensions": {
+        "width": 809,
+        "height": 337
+      },
+      "extracted_at": "2026-01-20T19:15:13.952976",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit5_learning_page08_img04.png": {
+      "filename": "unit5_learning_page08_img04.png",
+      "unit": "unit5_learning",
+      "page": 8,
+      "path": "outputs/images/unit5_learning_page08_img04.png",
+      "dimensions": {
+        "width": 805,
+        "height": 337
+      },
+      "extracted_at": "2026-01-20T19:15:13.967055",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit5_learning_page09_img05.png": {
+      "filename": "unit5_learning_page09_img05.png",
+      "unit": "unit5_learning",
+      "page": 9,
+      "path": "outputs/images/unit5_learning_page09_img05.png",
+      "dimensions": {
+        "width": 644,
+        "height": 250
+      },
+      "extracted_at": "2026-01-20T19:15:13.975206",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit5_learning_page32_img06.png": {
+      "filename": "unit5_learning_page32_img06.png",
+      "unit": "unit5_learning",
+      "page": 32,
+      "path": "outputs/images/unit5_learning_page32_img06.png",
+      "dimensions": {
+        "width": 945,
+        "height": 168
+      },
+      "extracted_at": "2026-01-20T19:15:13.984217",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit6_temporal_page01_img01.png": {
+      "filename": "unit6_temporal_page01_img01.png",
+      "unit": "unit6_temporal",
+      "page": 1,
+      "path": "outputs/images/unit6_temporal_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:14.085654",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit6_temporal_page01_img02.png": {
+      "filename": "unit6_temporal_page01_img02.png",
+      "unit": "unit6_temporal",
+      "page": 1,
+      "path": "outputs/images/unit6_temporal_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:14.161613",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit6_temporal_page06_img03.png": {
+      "filename": "unit6_temporal_page06_img03.png",
+      "unit": "unit6_temporal",
+      "page": 6,
+      "path": "outputs/images/unit6_temporal_page06_img03.png",
+      "dimensions": {
+        "width": 547,
+        "height": 265
+      },
+      "extracted_at": "2026-01-20T19:15:14.169450",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit6_temporal_page08_img04.png": {
+      "filename": "unit6_temporal_page08_img04.png",
+      "unit": "unit6_temporal",
+      "page": 8,
+      "path": "outputs/images/unit6_temporal_page08_img04.png",
+      "dimensions": {
+        "width": 1192,
+        "height": 287
+      },
+      "extracted_at": "2026-01-20T19:15:14.179446",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit6_temporal_page15_img05.png": {
+      "filename": "unit6_temporal_page15_img05.png",
+      "unit": "unit6_temporal",
+      "page": 15,
+      "path": "outputs/images/unit6_temporal_page15_img05.png",
+      "dimensions": {
+        "width": 1356,
+        "height": 344
+      },
+      "extracted_at": "2026-01-20T19:15:14.192502",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit7_advanced_page01_img01.png": {
+      "filename": "unit7_advanced_page01_img01.png",
+      "unit": "unit7_advanced",
+      "page": 1,
+      "path": "outputs/images/unit7_advanced_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:14.289845",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit7_advanced_page01_img02.png": {
+      "filename": "unit7_advanced_page01_img02.png",
+      "unit": "unit7_advanced",
+      "page": 1,
+      "path": "outputs/images/unit7_advanced_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:14.364548",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit8_applications_page01_img01.png": {
+      "filename": "unit8_applications_page01_img01.png",
+      "unit": "unit8_applications",
+      "page": 1,
+      "path": "outputs/images/unit8_applications_page01_img01.png",
+      "dimensions": {
+        "width": 2093,
+        "height": 1000
+      },
+      "extracted_at": "2026-01-20T19:15:14.475066",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit8_applications_page01_img02.png": {
+      "filename": "unit8_applications_page01_img02.png",
+      "unit": "unit8_applications",
+      "page": 1,
+      "path": "outputs/images/unit8_applications_page01_img02.png",
+      "dimensions": {
+        "width": 2884,
+        "height": 1640
+      },
+      "extracted_at": "2026-01-20T19:15:14.551327",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit8_applications_page06_img03.png": {
+      "filename": "unit8_applications_page06_img03.png",
+      "unit": "unit8_applications",
+      "page": 6,
+      "path": "outputs/images/unit8_applications_page06_img03.png",
+      "dimensions": {
+        "width": 2023,
+        "height": 647
+      },
+      "extracted_at": "2026-01-20T19:15:14.636580",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit8_applications_page09_img04.png": {
+      "filename": "unit8_applications_page09_img04.png",
+      "unit": "unit8_applications",
+      "page": 9,
+      "path": "outputs/images/unit8_applications_page09_img04.png",
+      "dimensions": {
+        "width": 690,
+        "height": 508
+      },
+      "extracted_at": "2026-01-20T19:15:14.649756",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit8_applications_page13_img05.png": {
+      "filename": "unit8_applications_page13_img05.png",
+      "unit": "unit8_applications",
+      "page": 13,
+      "path": "outputs/images/unit8_applications_page13_img05.png",
+      "dimensions": {
+        "width": 2852,
+        "height": 696
+      },
+      "extracted_at": "2026-01-20T19:15:14.717648",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit8_applications_page14_img06.png": {
+      "filename": "unit8_applications_page14_img06.png",
+      "unit": "unit8_applications",
+      "page": 14,
+      "path": "outputs/images/unit8_applications_page14_img06.png",
+      "dimensions": {
+        "width": 1600,
+        "height": 725
+      },
+      "extracted_at": "2026-01-20T19:15:14.742697",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit8_applications_page15_img07.png": {
+      "filename": "unit8_applications_page15_img07.png",
+      "unit": "unit8_applications",
+      "page": 15,
+      "path": "outputs/images/unit8_applications_page15_img07.png",
+      "dimensions": {
+        "width": 1600,
+        "height": 583
+      },
+      "extracted_at": "2026-01-20T19:15:14.770643",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit8_applications_page16_img08.png": {
+      "filename": "unit8_applications_page16_img08.png",
+      "unit": "unit8_applications",
+      "page": 16,
+      "path": "outputs/images/unit8_applications_page16_img08.png",
+      "dimensions": {
+        "width": 932,
+        "height": 810
+      },
+      "extracted_at": "2026-01-20T19:15:14.789311",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    },
+    "unit8_applications_page18_img09.png": {
+      "filename": "unit8_applications_page18_img09.png",
+      "unit": "unit8_applications",
+      "page": 18,
+      "path": "outputs/images/unit8_applications_page18_img09.png",
+      "dimensions": {
+        "width": 1600,
+        "height": 526
+      },
+      "extracted_at": "2026-01-20T19:15:14.817772",
+      "description": null,
+      "type": null,
+      "contains_math": null,
+      "described_at": null
+    }
+  }
+}
