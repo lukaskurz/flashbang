@@ -87,5 +87,18 @@ def config(show, validate):
     config_command(show, validate)
 
 
+@cli.command()
+@click.option('--unit', '-u', help='Analyze specific unit (if omitted, analyzes all)')
+@click.option('--target', '-t', type=int, default=60, help='Target card count for estimation')
+def analyze(unit, target):
+    """Analyze context window usage and content size for units.
+
+    Helps diagnose why flashcard generation might fail or produce fewer cards
+    than expected when using local Ollama models with limited context windows.
+    """
+    from src.cli.analyze import analyze_command
+    analyze_command(unit, target)
+
+
 if __name__ == '__main__':
     cli()

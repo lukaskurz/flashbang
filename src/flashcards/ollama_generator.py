@@ -233,6 +233,87 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
 """
         return prompt
 
+    def _check_and_truncate_for_context(
+        self,
+        markdown_content: str,
+        target_cards: int,
+        images: List[Dict]
+    ) -> str:
+        """
+        Check if content fits within model's context window and truncate if needed.
+
+        Estimates token usage and truncates markdown content if necessary to leave
+        room for the prompt template and generated output.
+
+        Args:
+            markdown_content: Full markdown content
+            target_cards: Target number of cards to generate
+            images: Image metadata list
+
+        Returns:
+            Possibly truncated markdown content
+        """
+        # Get model's context length
+        context_length = self.client.get_context_length()
+        logger.info(f"Model context length: {context_length} tokens")
+
+        # Estimate token budgets
+        # Prompt template overhead (without content): ~2000 tokens
+        prompt_overhead = 2000
+
+        # Image descriptions: ~50 tokens each
+        image_tokens = len(images) * 50
+
+        # Output estimate: ~100 tokens per card (front + back + tags + formatting)
+        # Add 20% buffer for safety
+        output_tokens = int(target_cards * 100 * 1.2)
+
+        # Available tokens for markdown content
+        available_for_content = context_length - prompt_overhead - image_tokens - output_tokens
+
+        # Estimate current content tokens
+        content_tokens = self.client.estimate_tokens(markdown_content)
+
+        logger.info(
+            f"Token budget: context={context_length}, "
+            f"overhead={prompt_overhead}, images={image_tokens}, "
+            f"output_reserve={output_tokens}, "
+            f"available_for_content={available_for_content}, "
+            f"content_estimate={content_tokens}"
+        )
+
+        if content_tokens <= available_for_content:
+            logger.info("Content fits within context window")
+            return markdown_content
+
+        # Need to truncate
+        # Calculate what percentage of content we can keep
+        keep_ratio = available_for_content / content_tokens
+        # Add safety margin
+        keep_ratio = max(0.5, keep_ratio * 0.9)  # Keep at least 50%
+
+        target_chars = int(len(markdown_content) * keep_ratio)
+
+        logger.warning(
+            f"Content exceeds context window! "
+            f"Truncating to ~{int(keep_ratio * 100)}% ({target_chars} chars). "
+            f"Consider processing smaller units or using a model with larger context."
+        )
+
+        # Truncate intelligently - try to end at a section boundary
+        truncated = markdown_content[:target_chars]
+
+        # Find last complete section (##)
+        last_section = truncated.rfind('\n## ')
+        if last_section > target_chars * 0.7:  # Only use if we keep at least 70%
+            truncated = truncated[:last_section]
+
+        # Add truncation notice
+        truncated += "\n\n[... content truncated due to context length limits ...]\n"
+
+        logger.info(f"Truncated content from {len(markdown_content)} to {len(truncated)} chars")
+        return truncated
+
     def generate_flashcards(
         self,
         unit_name: str,
@@ -273,6 +354,13 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
                 f"Could not determine page count, using config target: {target_cards}"
             )
 
+        # Check context window and potentially truncate content
+        markdown_content = self._check_and_truncate_for_context(
+            markdown_content, 
+            effective_target,
+            images
+        )
+
         # Create prompt
         prompt = self._create_generation_prompt(
             markdown_content,
@@ -286,9 +374,11 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
         # Create a wrapper callback that stops generation when target is reached
         accumulated_content = []
         card_count = [0]  # Use list to allow modification in nested function
+        # Add buffer: stop when we have target + 2 cards (to ensure we reach target)
+        stop_threshold = effective_target + 2
 
         def counting_callback(chunk: str) -> None:
-            """Callback that counts cards and stops at target."""
+            """Callback that counts cards."""
             accumulated_content.append(chunk)
             full_text = ''.join(accumulated_content)
 
@@ -300,8 +390,17 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
             if progress_callback:
                 progress_callback(chunk)
 
-        # Use streaming if callback provided
-        use_streaming = progress_callback is not None
+        def should_stop(full_text: str) -> bool:
+            """Check if we have enough cards to stop generation."""
+            lines = full_text.split('\n')
+            current_count = sum(1 for line in lines if line.count('\t') >= 2)
+            if current_count >= stop_threshold:
+                logger.info(f"Generated {current_count} cards, stopping (target: {effective_target})")
+                return True
+            return False
+
+        # Use streaming for early stopping capability
+        use_streaming = True
 
         # Prepare output path
         output_path = Path(output_dir) / f"{unit_name}_anki.txt"
@@ -315,7 +414,8 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
                 prompt=prompt,
                 temperature=self.temperature,
                 stream=use_streaming,
-                progress_callback=counting_callback if use_streaming else None
+                progress_callback=counting_callback if use_streaming else None,
+                stop_condition=should_stop
             )
         except KeyboardInterrupt:
             interrupted = True
@@ -438,3 +538,57 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
             results['valid'] = False
 
         return results
+
+    def get_context_usage_report(self, unit_name: str, target_cards: int = 60) -> Dict[str, Any]:
+        """
+        Get a report of estimated context window usage for a unit.
+
+        Useful for debugging why generation might fail or produce fewer cards.
+
+        Args:
+            unit_name: Unit name to analyze
+            target_cards: Target number of cards
+
+        Returns:
+            Dictionary with context usage analysis
+        """
+        markdown_content = self.load_markdown(unit_name)
+        images = self.load_image_metadata(unit_name)
+
+        context_length = self.client.get_context_length()
+
+        # Estimate tokens
+        prompt_overhead = 2000
+        image_tokens = len(images) * 50
+        output_tokens = int(target_cards * 100 * 1.2)
+        content_tokens = self.client.estimate_tokens(markdown_content)
+
+        total_estimated = prompt_overhead + image_tokens + content_tokens + output_tokens
+        available_for_content = context_length - prompt_overhead - image_tokens - output_tokens
+
+        fits = content_tokens <= available_for_content
+        overflow = max(0, total_estimated - context_length)
+        utilization = (total_estimated / context_length) * 100
+
+        return {
+            'unit_name': unit_name,
+            'model': self.client.model,
+            'context_length': context_length,
+            'estimated_tokens': {
+                'prompt_overhead': prompt_overhead,
+                'image_metadata': image_tokens,
+                'markdown_content': content_tokens,
+                'output_reserve': output_tokens,
+                'total': total_estimated
+            },
+            'available_for_content': available_for_content,
+            'content_fits': fits,
+            'overflow_tokens': overflow,
+            'utilization_percent': round(utilization, 1),
+            'recommendation': (
+                "Content fits within context window" if fits else
+                f"Content too large! Reduce by ~{overflow} tokens or use a larger context model"
+            ),
+            'content_length_chars': len(markdown_content),
+            'image_count': len(images)
+        }

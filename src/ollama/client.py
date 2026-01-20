@@ -157,7 +157,8 @@ class OllamaClient:
         system: Optional[str] = None,
         temperature: float = 0.7,
         stream: bool = False,
-        progress_callback: Optional[Callable[[str], None]] = None
+        progress_callback: Optional[Callable[[str], None]] = None,
+        stop_condition: Optional[Callable[[str], bool]] = None
     ) -> Optional[str]:
         """
         Generate text from prompt using Ollama.
@@ -168,6 +169,7 @@ class OllamaClient:
             temperature: Sampling temperature
             stream: Whether to stream the response
             progress_callback: Optional callback function(chunk: str) for streaming updates
+            stop_condition: Optional callback(full_text) -> bool that returns True to stop generation early
 
         Returns:
             Generated text or None if failed
@@ -194,6 +196,7 @@ class OllamaClient:
                     if stream:
                         # Stream the response
                         full_response = ""
+                        stopped_early = False
                         with client.stream(
                             "POST",
                             f"{self.base_url}/api/generate",
@@ -211,6 +214,11 @@ class OllamaClient:
                                             full_response += chunk
                                             if progress_callback:
                                                 progress_callback(chunk)
+                                            # Check stop condition
+                                            if stop_condition and stop_condition(full_response):
+                                                logger.info("Stop condition met, ending generation early")
+                                                stopped_early = True
+                                                break
                                     except json_module.JSONDecodeError:
                                         continue
 
@@ -262,3 +270,37 @@ class OllamaClient:
         except Exception as e:
             logger.debug(f"Failed to get model info: {e}")
             return None
+
+    def get_context_length(self) -> int:
+        """
+        Get the model's context length (max tokens).
+
+        Returns:
+            Context length in tokens, or default of 8192 if unknown
+        """
+        model_info = self.get_model_info()
+        if model_info:
+            # Try to find context_length in model_info
+            model_details = model_info.get('model_info', {})
+            # Look for context_length key with different possible prefixes
+            for key in model_details:
+                if 'context_length' in key:
+                    return model_details[key]
+        # Default context length if we can't determine it
+        return 8192
+
+    def estimate_tokens(self, text: str) -> int:
+        """
+        Estimate token count for text (rough approximation).
+
+        Uses ~4 characters per token as a rough estimate.
+        This is conservative for most models.
+
+        Args:
+            text: Text to estimate tokens for
+
+        Returns:
+            Estimated token count
+        """
+        # Rough estimate: ~4 chars per token (conservative)
+        return len(text) // 4

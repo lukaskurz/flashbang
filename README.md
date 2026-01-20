@@ -222,6 +222,19 @@ flashbang config --show              # Display current config
 flashbang config --validate          # Validate config file
 ```
 
+**`flashbang analyze`** - Analyze context window usage for Ollama generation
+```bash
+flashbang analyze                    # Analyze all units
+flashbang analyze --unit unit1       # Analyze specific unit
+flashbang analyze --target 80        # Custom target card count
+```
+
+This command helps diagnose issues when using local Ollama models with limited context windows. It shows:
+- Token estimates for each unit's content
+- Available context budget vs. content size
+- Utilization percentage and overflow warnings
+- Recommendations for units that exceed context limits
+
 ## Card Quality
 
 Generated flashcards follow learning science best practices:
@@ -341,6 +354,27 @@ ollama list
 # Pull required model
 ollama pull ministral-3:8b
 ```
+
+### Ollama Context Window Issues
+
+If flashcard generation with Ollama produces fewer cards than expected or fails:
+
+```bash
+# Check context window usage
+flashbang analyze --unit unit1
+```
+
+**Common causes:**
+- **Content too large**: Long markdown content exceeds model's context window
+- **Large output reserve**: Many target cards require more output tokens
+
+**Solutions:**
+1. Use a model with larger context (e.g., `mistral`, `llama3`)
+2. Split large PDFs into smaller units
+3. Reduce the target card count
+4. The generator auto-truncates content if needed (with warning)
+
+**Early stopping**: Generation automatically stops when enough cards are produced, saving time on large requests.
 
 ### Import Errors in Anki
 
