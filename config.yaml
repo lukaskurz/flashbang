@@ -1,79 +1,58 @@
 subject:
-  name: "Course Materials"
-  short_name: "Course"
-  field: "Education"
-  description: "Academic course materials and lecture content"
-
+  name: Machine Learning Advanced Techniques
+  short_name: MLA
+  field: Machine learning
+  description: Educational materials for Machine Learning Advanced Techniques
 prompts:
   system_context: |
-    You are generating flashcards for a {field} course on {name}.
-    Focus on {description}.
-
+    You are generating flashcards for a Machine learning course on
+    Machine Learning Advanced Techniques.
+    Focus on Educational materials for Machine Learning Advanced Techniques.'
   card_quality_focus:
-    - "Test understanding, not memorization"
-    - "Use concrete examples"
-    - "Keep calculations simple"
-    - "Focus on concepts and intuition"
-
+    - Test understanding, not memorization
+    - Use concrete examples
+    - Keep calculations simple
+    - Focus on concepts and intuition
   example_cards:
     - front: "Why is this algorithm more efficient than the naive approach?"
       back: "It uses <strong>recursive computation</strong>:<br>1. Stores intermediate results to avoid redundant calculations<br>2. Builds the solution incrementally from smaller subproblems<br>3. Only needs the previous step, not the entire history"
       tags: "algorithms efficiency optimization"
-
     - front: "What is the key insight behind this concept?"
       back: "The key insight is that <strong>understanding the relationship</strong> between components:<br>1. Allows us to reason about the system systematically<br>2. Reveals underlying patterns and structures<br>3. Enables prediction and decision-making"
       tags: "concepts understanding relationships"
 
 processing:
   extract_images: true
-  min_image_size: [100, 100]  # width, height in pixels
+  min_image_size:
+  - 100
+  - 100
   image_format: png
   image_quality: 95
-
 output:
   markdown_dir: outputs/markdown
   images_dir: outputs/images
   anki_dir: outputs/anki
   apkg_dir: outputs/apkg
-
-# Default settings for auto-discovered PDFs
-defaults:
-  target_cards: 60
-
-# Optional: Override specific units (all others are auto-discovered)
-# units:
-#   "Intro.pdf":
-#     unit_name: unit0_intro
-#     target_cards: 30
-#     tags: [unit0, introduction, overview]
-
+units: {}
 card_distribution:
-  conceptual: 0.40
-  worked_examples: 0.20
-  algorithm: 0.20
-  pattern_recognition: 0.10
-  visual: 0.10
-
-generation:
-  provider: "ollama"  # Options: "claude", "ollama"
-
-  claude:
-    model: "claude-sonnet-4-20250514"
-    api_key_env: "ANTHROPIC_API_KEY"
-    max_tokens: 16000
-
-  ollama:
-    base_url: "http://localhost:11434"
-    model: "ministral-3:14b"  # User can configure: ministral-3:8b, mistral, llama3, etc.
-    timeout: 120  # Longer timeout for larger model
-    max_retries: 3
-    temperature: 0.7
-
-ollama:  # For image descriptions only
+  conceptual: 0.4
+  worked_examples: 0.2
+  algorithm: 0.2
+  pattern_recognition: 0.1
+  visual: 0.1
+ollama:
   enabled: true
   base_url: http://localhost:11434
   model: ministral-3:8b
   timeout: 30
   batch_size: 5
   max_retries: 3
-  description_length: concise  # 50-100 words
+  description_length: concise
+generation:
+  provider: "ollama"  # Options: "claude", "ollama"
+  ollama:
+    base_url: "http://localhost:11434"
+    model: "ministral-3:14b"  # User can configure: ministral-3:8b, mistral, llama3, etc.
+    timeout: 240  # Longer timeout for larger model
+    max_retries: 3
+    temperature: 0.7

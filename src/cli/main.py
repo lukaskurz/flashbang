@@ -50,7 +50,7 @@ def extract(unit, no_images, no_describe):
 
 
 @cli.command()
-@click.option('--unit', '-u', required=True, help='Unit to generate flashcards for')
+@click.option('--unit', '-u', help='Unit to generate flashcards for (if omitted, generates for all units)')
 @click.option('--show-images', is_flag=True, help='Display image descriptions in output')
 @click.option('--provider', '-p', type=click.Choice(['claude', 'ollama']),
               help='Override card generation provider (uses config default if not specified)')

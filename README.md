@@ -1,6 +1,10 @@
-# Anki Flashcard Generator
+<div align="center">
+  <img src="logo.png" alt="Anki Flashcard Generator Logo" width="400">
 
-Subject-agnostic tool to automatically generate high-quality Anki flashcards from lecture PDFs using Claude API.
+  # Anki Flashcard Generator
+
+  Subject-agnostic tool to automatically generate high-quality Anki flashcards from lecture PDFs using Claude API.
+</div>
 
 ## Features
 

@@ -7,7 +7,7 @@ Provides low-level interface to Ollama's vision capabilities.
 import httpx
 import logging
 import time
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Callable
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
@@ -37,12 +37,13 @@ class OllamaClient:
         Args:
             base_url: Ollama server URL
             model: Vision model to use
-            timeout: Request timeout in seconds
+            timeout: Request timeout in seconds (0 or -1 to disable)
             max_retries: Maximum retry attempts
         """
         self.base_url = base_url.rstrip('/')
         self.model = model
-        self.timeout = timeout
+        # Convert 0 or -1 to None (disable timeout)
+        self.timeout = None if timeout in (0, -1) else timeout
         self.max_retries = max_retries
 
     def check_availability(self) -> bool:
@@ -154,7 +155,9 @@ class OllamaClient:
         self,
         prompt: str,
         system: Optional[str] = None,
-        temperature: float = 0.7
+        temperature: float = 0.7,
+        stream: bool = False,
+        progress_callback: Optional[Callable[[str], None]] = None
     ) -> Optional[str]:
         """
         Generate text from prompt using Ollama.
@@ -163,6 +166,8 @@ class OllamaClient:
             prompt: Text prompt
             system: Optional system message
             temperature: Sampling temperature
+            stream: Whether to stream the response
+            progress_callback: Optional callback function(chunk: str) for streaming updates
 
         Returns:
             Generated text or None if failed
@@ -174,7 +179,7 @@ class OllamaClient:
         payload = {
             "model": self.model,
             "prompt": prompt,
-            "stream": False,
+            "stream": stream,
             "options": {
                 "temperature": temperature
             }
@@ -186,14 +191,40 @@ class OllamaClient:
         for attempt in range(self.max_retries):
             try:
                 with httpx.Client(timeout=self.timeout) as client:
-                    response = client.post(
-                        f"{self.base_url}/api/generate",
-                        json=payload
-                    )
-                    response.raise_for_status()
+                    if stream:
+                        # Stream the response
+                        full_response = ""
+                        with client.stream(
+                            "POST",
+                            f"{self.base_url}/api/generate",
+                            json=payload
+                        ) as response:
+                            response.raise_for_status()
 
-                    result = response.json()
-                    return result.get("response", "")
+                            import json as json_module
+                            for line in response.iter_lines():
+                                if line.strip():
+                                    try:
+                                        chunk_data = json_module.loads(line)
+                                        chunk = chunk_data.get("response", "")
+                                        if chunk:
+                                            full_response += chunk
+                                            if progress_callback:
+                                                progress_callback(chunk)
+                                    except json_module.JSONDecodeError:
+                                        continue
+
+                        return full_response
+                    else:
+                        # Non-streaming mode (original behavior)
+                        response = client.post(
+                            f"{self.base_url}/api/generate",
+                            json=payload
+                        )
+                        response.raise_for_status()
+
+                        result = response.json()
+                        return result.get("response", "")
 
             except httpx.TimeoutException:
                 if attempt < self.max_retries - 1:

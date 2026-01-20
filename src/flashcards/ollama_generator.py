@@ -5,7 +5,7 @@ Anki flashcard generator using Ollama.
 import json
 import logging
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional, Callable
 from src.config import Config
 from src.flashcards.base import CardGenerationProvider
 from src.ollama.client import OllamaClient
@@ -196,7 +196,8 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
         self,
         unit_name: str,
         target_cards: int = 60,
-        output_dir: str = "outputs"
+        output_dir: str = "outputs",
+        progress_callback: Optional[Callable[[str], None]] = None
     ) -> str:
         """
         Generate Anki flashcards for a unit using Ollama.
@@ -205,6 +206,7 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
             unit_name: Unit name (e.g., 'unit3_core_topics')
             target_cards: Target number of flashcards to generate
             output_dir: Output directory for .txt file
+            progress_callback: Optional callback function(chunk: str) for progress updates
 
         Returns:
             Path to generated .txt file
@@ -225,9 +227,14 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
         # Generate using Ollama
         logger.info(f"Calling Ollama ({self.client.model}) to generate ~{target_cards} flashcards...")
 
+        # Use streaming if callback provided
+        use_streaming = progress_callback is not None
+
         flashcard_content = self.client.generate_text(
             prompt=prompt,
-            temperature=self.temperature
+            temperature=self.temperature,
+            stream=use_streaming,
+            progress_callback=progress_callback
         )
 
         if not flashcard_content:

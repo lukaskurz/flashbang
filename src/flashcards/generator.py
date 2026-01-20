@@ -5,7 +5,7 @@ Anki flashcard generator using Claude API.
 import json
 import logging
 from pathlib import Path
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Callable
 import anthropic
 import os
 from src.config import Config
@@ -90,7 +90,8 @@ class ClaudeCardGenerator(CardGenerationProvider):
         self,
         unit_name: str,
         target_cards: int = 60,
-        output_dir: str = "outputs"
+        output_dir: str = "outputs",
+        progress_callback: Optional[Callable[[str], None]] = None
     ) -> str:
         """
         Generate Anki flashcards for a unit.
@@ -99,6 +100,7 @@ class ClaudeCardGenerator(CardGenerationProvider):
             unit_name: Unit name (e.g., 'unit3_core_topics')
             target_cards: Target number of flashcards to generate
             output_dir: Output directory for .txt file
+            progress_callback: Optional callback for progress updates
 
         Returns:
             Path to generated .txt file
@@ -119,16 +121,31 @@ class ClaudeCardGenerator(CardGenerationProvider):
         # Generate flashcards using Claude
         logger.info(f"Calling Claude API to generate ~{target_cards} flashcards...")
 
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=self.max_tokens,
-            messages=[{
-                "role": "user",
-                "content": prompt
-            }]
-        )
-
-        flashcard_content = response.content[0].text
+        if progress_callback:
+            # Use streaming for progress feedback
+            flashcard_content = ""
+            with self.client.messages.stream(
+                model=self.model,
+                max_tokens=self.max_tokens,
+                messages=[{
+                    "role": "user",
+                    "content": prompt
+                }]
+            ) as stream:
+                for text in stream.text_stream:
+                    flashcard_content += text
+                    progress_callback(text)
+        else:
+            # Non-streaming mode
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=self.max_tokens,
+                messages=[{
+                    "role": "user",
+                    "content": prompt
+                }]
+            )
+            flashcard_content = response.content[0].text
 
         # Save to file
         output_path = Path(output_dir) / f"{unit_name}_anki.txt"

@@ -3,7 +3,7 @@ Abstract base class for flashcard generation providers.
 """
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Dict, Any, Optional, Callable
 
 
 class CardGenerationProvider(ABC):
@@ -23,7 +23,8 @@ class CardGenerationProvider(ABC):
         self,
         unit_name: str,
         target_cards: int,
-        output_dir: str
+        output_dir: str,
+        progress_callback: Optional[Callable[[str], None]] = None
     ) -> str:
         """
         Generate flashcards for a unit.
@@ -32,6 +33,7 @@ class CardGenerationProvider(ABC):
             unit_name: Unit name
             target_cards: Target number of cards
             output_dir: Output directory
+            progress_callback: Optional callback for progress updates
 
         Returns:
             Path to generated .txt file
