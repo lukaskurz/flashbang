@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.png" alt="Anki Flashcard Generator Logo" width="400">
+  <img src="logo_transparent.png" alt="Anki Flashcard Generator Logo" width="400">
 
   # Anki Flashcard Generator
 
