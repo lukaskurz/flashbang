@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Setup script for anki-gen CLI tool.
+Setup script for flashbang CLI tool.
 
 Install with:
     pip install -e .
 
-This creates the 'anki-gen' command.
+This creates the 'flashbang' command.
 """
 
 from setuptools import setup, find_packages
@@ -26,9 +26,9 @@ if requirements_file.exists():
     ]
 
 setup(
-    name="anki-gen",
+    name="flashbang",
     version="1.0.0",
-    description="Anki flashcard generation tool for automatic deck creation from lecture PDFs",
+    description="flashbang - Bang out flashcards from PDFs instantly",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Lukas Kurz",
@@ -40,7 +40,7 @@ setup(
     python_requires=">=3.8",
     entry_points={
         'console_scripts': [
-            'anki-gen=src.cli.main:cli',
+            'flashbang=src.cli.main:cli',
         ],
     },
     classifiers=[
@@ -54,5 +54,5 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
     ],
-    keywords="anki flashcards education automation pdf-extraction",
+    keywords="flashbang anki flashcards education automation pdf",
 )

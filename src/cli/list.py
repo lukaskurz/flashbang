@@ -24,7 +24,7 @@ def list_command(detailed=False, stats=False):
     """
     console.print(Panel.fit(
         "[bold cyan]Available Units[/bold cyan]",
-        subtitle="anki-gen list"
+        subtitle="flashbang list"
     ))
 
     # Load configuration
@@ -118,8 +118,8 @@ def list_command(detailed=False, stats=False):
         console.print("  APKG: Packaged for Anki")
 
     console.print("\n[bold cyan]Common Commands:[/bold cyan]")
-    console.print("  [green]anki-gen extract[/green] - Extract PDFs to markdown")
-    console.print("  [green]anki-gen generate --unit <name>[/green] - Generate flashcards")
-    console.print("  [green]anki-gen package --unit <name>[/green] - Package into .apkg")
+    console.print("  [green]flashbang extract[/green] - Extract PDFs to markdown")
+    console.print("  [green]flashbang generate --unit <name>[/green] - Generate flashcards")
+    console.print("  [green]flashbang package --unit <name>[/green] - Package into .apkg")
 
     return True

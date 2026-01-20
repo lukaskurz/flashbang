@@ -16,7 +16,7 @@ def init_command():
     """Initialize configuration for a new subject."""
     console.print(Panel.fit(
         "[bold cyan]Initialize New Subject[/bold cyan]",
-        subtitle="anki-gen init"
+        subtitle="flashbang init"
     ))
 
     console.print("\nThis will create a new config.yaml file for your subject.\n")
@@ -144,9 +144,9 @@ def init_command():
     console.print("       unit_name: unit1_introduction")
     console.print("       target_cards: 50")
     console.print("       tags: [unit1, introduction][/dim]")
-    console.print("3. Run [green]anki-gen extract --all[/green] to extract PDFs")
-    console.print("4. Run [green]anki-gen generate --all[/green] to generate flashcards")
-    console.print("5. Run [green]anki-gen package --all[/green] to create .apkg files")
+    console.print("3. Run [green]flashbang extract --all[/green] to extract PDFs")
+    console.print("4. Run [green]flashbang generate --all[/green] to generate flashcards")
+    console.print("5. Run [green]flashbang package --all[/green] to create .apkg files")
 
     console.print(f"\n[bold green]✓ Initialization complete for {subject_name}![/bold green]")
 

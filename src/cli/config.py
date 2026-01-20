@@ -25,7 +25,7 @@ def config_command(show=False, validate=False):
     """
     console.print(Panel.fit(
         "[bold cyan]Configuration Management[/bold cyan]",
-        subtitle="anki-gen config"
+        subtitle="flashbang config"
     ))
 
     config_path = Path("config.yaml")
@@ -137,8 +137,8 @@ def config_command(show=False, validate=False):
             console.print(info_table)
 
             console.print("\n[bold cyan]Options:[/bold cyan]")
-            console.print("  [green]anki-gen config --show[/green] - Show full configuration")
-            console.print("  [green]anki-gen config --validate[/green] - Validate configuration")
+            console.print("  [green]flashbang config --show[/green] - Show full configuration")
+            console.print("  [green]flashbang config --validate[/green] - Validate configuration")
 
         except Exception as e:
             console.print(f"[red]✗ Error: {e}[/red]")

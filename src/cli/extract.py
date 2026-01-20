@@ -36,7 +36,7 @@ def extract_command(unit_filter=None, no_images=False, no_describe=False):
 
     console.print(Panel.fit(
         "[bold cyan]PDF Extraction to Markdown[/bold cyan]",
-        subtitle="anki-gen extract"
+        subtitle="flashbang extract"
     ))
 
     # Load configuration
@@ -198,7 +198,7 @@ def extract_command(unit_filter=None, no_images=False, no_describe=False):
     console.print("2. Check images: [dim]outputs/images/[/dim]")
     if stats['described_images'] > 0:
         console.print("3. View descriptions: [dim]outputs/metadata/image_descriptions.json[/dim]")
-    console.print("4. Generate flashcards: [green]anki-gen generate --unit <name>[/green]")
+    console.print("4. Generate flashcards: [green]flashbang generate --unit <name>[/green]")
     console.print("="*60 + "\n")
 
     return stats['failed_pdfs'] == 0

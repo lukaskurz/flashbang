@@ -1,19 +1,21 @@
 <div align="center">
-  <img src="logo_transparent.png" alt="Anki Flashcard Generator Logo" width="400">
+  <img src="logo_transparent.png" alt="flashbang" width="400">
 
-  # Anki Flashcard Generator
+  # flashbang
 
-  Subject-agnostic tool to automatically generate high-quality Anki flashcards from lecture PDFs using Claude API.
+  Bang out flashcards from PDFs instantly
+
+  <sub>(if you have an AI datacenter worth six figures, otherwise it's gonna take some minutes)</sub>
 </div>
 
 ## Features
 
-- 🎓 **Multi-Subject Support**: Works for any academic subject (Math, CS, Physics, Biology, etc.)
-- 🤖 **AI-Powered**: Uses Claude to generate conceptual, exam-aligned flashcards
-- 📄 **PDF Processing**: Automatically extracts text and images from PDFs
-- 🖼️ **Image Descriptions**: Optional Ollama integration for automatic image captioning
-- 📦 **Ready to Import**: Generates .apkg files directly importable into Anki
-- ⚙️ **Highly Configurable**: Customize card types, distributions, and generation prompts per subject
+- 🚀 **Lightning Fast**: Generate hundreds of flashcards in seconds
+- 🎓 **Subject Agnostic**: Works for any academic subject
+- 🤖 **AI-Powered**: Uses Claude API or local Ollama for quality generation
+- 📄 **PDF Processing**: Auto-extracts text and images
+- 🖼️ **Image Support**: Optional image descriptions with Ollama
+- 📦 **Ready to Import**: Direct .apkg output for Anki
 
 ## Quick Start
 
@@ -21,7 +23,7 @@
 
 ```bash
 # Clone or download this repository
-cd anki-flashcard-generator
+cd flashbang
 
 # Create virtual environment
 python3 -m venv venv
@@ -31,14 +33,14 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -e .
 ```
 
-### Initialize for Your Subject
+### Setup
 
 ```bash
 # Interactive setup
-anki-gen init
+flashbang init
 ```
 
-This creates `config.yaml` with subject-specific settings and directory structure.
+This creates `config.yaml` with your subject settings and directory structure.
 
 ### Set Up API Key
 
@@ -53,20 +55,16 @@ export ANTHROPIC_API_KEY='your-api-key-here'
 # 1. Place PDFs in pdfs/ directory
 cp ~/my-lectures/*.pdf pdfs/
 
-# 2. (Optional) Edit config.yaml to customize units
-# Units are auto-discovered, but you can override settings if needed
-vim config.yaml
+# 2. Extract PDFs to markdown and images
+flashbang extract --all
 
-# 3. Extract PDFs to markdown and images
-anki-gen extract --all
+# 3. Generate flashcards (uses Claude API)
+flashbang generate --unit unit_intro
 
-# 4. Generate flashcards (uses Claude API)
-anki-gen generate --unit unit_intro  # Use auto-generated unit name
+# 4. Package into .apkg files
+flashbang package --all
 
-# 5. Package into .apkg files
-anki-gen package --all
-
-# 6. Import into Anki Desktop
+# 5. Import into Anki Desktop
 # File → Import → select .apkg file
 ```
 
@@ -92,11 +90,6 @@ prompts:
     - "Test understanding, not memorization"
     - "Use concrete examples"
     - "Keep calculations simple"
-
-  example_cards:
-    - front: "Why must every basis for \\(\\mathbb{R}^n\\) have exactly \\(n\\) vectors?"
-      back: "Because spanning requires \\(n\\) vectors..."
-      tags: "linear-algebra basis"
 ```
 
 ### Unit Configuration
@@ -113,10 +106,7 @@ pdfs/
 └── Unit_3.pdf
 ```
 
-Units are auto-configured with:
-- **unit_name**: Generated from filename (e.g., `Unit_1.pdf` → `unit_1`)
-- **target_cards**: 50 (or set `defaults.target_cards` in config.yaml)
-- **tags**: [`unit_name`]
+Units are auto-configured with sensible defaults.
 
 ```yaml
 # Optional: Set defaults for all auto-discovered units
@@ -140,37 +130,7 @@ units:
     tags: [unit0, introduction, overview]
 
   "Unit_1.pdf":
-    target_cards: 60  # Override just target_cards, keep auto-generated name
-```
-
-#### Migration from Old Config
-
-**Before (all hardcoded)**:
-```yaml
-units:
-  "Intro.pdf":
-    unit_name: unit0_intro
-    target_cards: 30
-    tags: [unit0, introduction]
-  "Unit_1.pdf":
-    unit_name: unit1_fundamentals
-    target_cards: 50
-    tags: [unit1, fundamentals]
-  # ... 20 more units
-```
-
-**After (auto-discovery)**:
-```yaml
-defaults:
-  target_cards: 50
-
-units:
-  # Only override special cases
-  "Intro.pdf":
-    unit_name: unit0_intro
-    target_cards: 30
-    tags: [unit0, introduction]
-  # All other units auto-discovered!
+    target_cards: 60  # Override just target_cards
 ```
 
 ### Card Distribution
@@ -186,9 +146,9 @@ card_distribution:
   visual: 0.10             # Image-based cards
 ```
 
-### Card Generation Providers
+### Generation Providers
 
-Choose between Claude API or local Ollama for flashcard generation:
+Choose between Claude API or local Ollama:
 
 ```yaml
 generation:
@@ -201,140 +161,68 @@ generation:
 
   ollama:
     base_url: "http://localhost:11434"
-    model: "ministral-3:14b"  # User can configure: ministral-3:8b, mistral, llama3, etc.
+    model: "ministral-3:14b"
     timeout: 120
-    max_retries: 3
-    temperature: 0.7
 ```
 
 **Claude (Default)**
-- **Pros**: High quality, excellent instruction following, best for complex subjects
-- **Cons**: API costs (~$0.10-0.30 per unit)
-
-```bash
-# Set API key
-export ANTHROPIC_API_KEY='your-key'
-
-# Generate
-anki-gen generate --unit unit1_intro
-```
+- High quality, excellent instruction following
+- API costs: ~$0.10-0.30 per unit
 
 **Ollama (Local, Free)**
-- **Pros**: Free, local, privacy-focused, no API limits
-- **Cons**: Requires local setup, may need prompt tuning, variable quality
+- Free, local, privacy-focused
+- Requires local setup, may need prompt tuning
 
 ```bash
-# 1. Install Ollama (ollama.ai)
-# 2. Pull model
-ollama pull ministral-3:14b
+# Use Claude (default)
+flashbang generate --unit unit1_intro
 
-# 3. Configure config.yaml
-# Set generation.provider: "ollama"
-
-# 4. Generate
-anki-gen generate --unit unit1_intro
+# Use Ollama (override)
+flashbang generate --unit unit1 --provider ollama
 ```
-
-**Override Provider Per-Command**
-```bash
-# Use Ollama for this run only
-anki-gen generate --unit unit1 --provider ollama
-
-# Use Claude for this run only
-anki-gen generate --unit unit1 --provider claude
-```
-
-For detailed Ollama setup and configuration, see [docs/OLLAMA_GUIDE.md](docs/OLLAMA_GUIDE.md).
 
 ## CLI Commands
 
-### `anki-gen init`
-Initialize configuration for a new subject.
+### Command Reference
 
+**`flashbang init`** - Initialize configuration for a new subject
 ```bash
-anki-gen init
+flashbang init
 ```
 
-### `anki-gen extract`
-Extract PDFs to markdown and images.
-
+**`flashbang extract`** - Extract PDFs to markdown and images
 ```bash
-anki-gen extract --all              # Extract all units
-anki-gen extract --unit unit1       # Extract specific unit
-anki-gen extract --all --no-images  # Skip image extraction
+flashbang extract --all              # Extract all units
+flashbang extract --unit unit1       # Extract specific unit
+flashbang extract --all --no-images  # Skip image extraction
 ```
 
-### `anki-gen generate`
-Generate flashcards using Claude API or Ollama.
-
+**`flashbang generate`** - Generate flashcards using Claude or Ollama
 ```bash
-anki-gen generate --unit unit1_introduction
-anki-gen generate --unit unit2 --show-images
-anki-gen generate --unit unit3 --provider ollama  # Use Ollama instead of Claude
+flashbang generate --unit unit1_introduction
+flashbang generate --unit unit2 --show-images
+flashbang generate --unit unit3 --provider ollama
 ```
 
-**Note**: Default provider is Claude (requires API key). To use Ollama, either set `generation.provider: "ollama"` in config.yaml or use `--provider ollama` flag.
-
-### `anki-gen package`
-Package flashcards into .apkg files.
-
+**`flashbang package`** - Package flashcards into .apkg files
 ```bash
-anki-gen package --all              # Package all units
-anki-gen package --unit unit1       # Package specific unit
+flashbang package --all              # Package all units
+flashbang package --unit unit1       # Package specific unit
 ```
 
-### `anki-gen list`
-List configured units and their status.
-
+**`flashbang list`** - List configured units and their status
 ```bash
-anki-gen list
-anki-gen list --detailed
+flashbang list
+flashbang list --detailed
 ```
 
-### `anki-gen config`
-View or validate configuration.
-
+**`flashbang config`** - View or validate configuration
 ```bash
-anki-gen config --show              # Display current config
-anki-gen config --validate          # Validate config file
+flashbang config --show              # Display current config
+flashbang config --validate          # Validate config file
 ```
 
-## Project Structure
-
-```
-project/
-├── config.yaml              # Subject configuration
-├── pdfs/                    # Source PDF files
-├── outputs/
-│   ├── markdown/            # Extracted text content
-│   ├── images/              # Extracted images
-│   ├── anki/               # Generated .txt flashcard files
-│   ├── apkg/               # Packaged .apkg files
-│   └── metadata/            # Image descriptions (if using Ollama)
-├── src/
-│   ├── cli/                # CLI commands
-│   ├── flashcards/         # Flashcard generation
-│   ├── ollama/             # Image description (optional)
-│   └── ...
-└── docs/
-    └── SUBJECT_GUIDE.md    # Examples for different subjects
-```
-
-## Multi-Subject Usage
-
-This tool works for any academic subject. See `docs/SUBJECT_GUIDE.md` for detailed examples:
-
-- **Mathematics**: Linear Algebra, Calculus, Statistics
-- **Computer Science**: Algorithms, Data Structures, Systems
-- **Physics**: Mechanics, E&M, Quantum
-- **Biology**: Molecular Biology, Genetics
-- **Chemistry**: Organic Chemistry, Biochemistry
-- **History**: World War II, Ancient Rome
-- **Languages**: German Grammar, Spanish Vocabulary
-
-Each subject has specific configuration recommendations and example cards.
-
-## Card Quality Features
+## Card Quality
 
 Generated flashcards follow learning science best practices:
 
@@ -343,7 +231,6 @@ Generated flashcards follow learning science best practices:
 - ✅ **Concrete Examples**: Uses specific scenarios
 - ✅ **Simple Calculations**: Mental math only
 - ✅ **Visual Integration**: Includes diagrams when relevant
-- ✅ **Proper Formatting**: MathJax for math, HTML for structure
 
 ### Example Cards
 
@@ -367,6 +254,25 @@ Back: 1. Leading strand: continuous synthesis toward fork
 Tags: molecular-biology dna-replication
 ```
 
+## Project Structure
+
+```
+project/
+├── config.yaml              # Subject configuration
+├── pdfs/                    # Source PDF files
+├── outputs/
+│   ├── markdown/            # Extracted text content
+│   ├── images/              # Extracted images
+│   ├── anki/               # Generated .txt flashcard files
+│   ├── apkg/               # Packaged .apkg files
+│   └── metadata/            # Image descriptions (if using Ollama)
+└── src/
+    ├── cli/                # CLI commands
+    ├── flashcards/         # Flashcard generation
+    ├── ollama/             # Image description (optional)
+    └── ...
+```
+
 ## Advanced Features
 
 ### Image Descriptions with Ollama
@@ -381,65 +287,15 @@ ollama:
 ```
 
 ```bash
-# Ensure Ollama is running
+# 1. Install Ollama (ollama.ai)
+# 2. Pull model
+ollama pull ministral-3:8b
+
+# 3. Start Ollama
 ollama serve
 
-# Extract with descriptions
-anki-gen extract --all
-```
-
-### Programmatic Usage
-
-Use as a Python library:
-
-```python
-from src.config import Config
-from src.flashcards.factory import create_card_generator
-
-# Load configuration
-config = Config('config.yaml')
-
-# Create generator (uses configured provider)
-generator = create_card_generator(config)
-
-# Or override provider
-generator = create_card_generator(config, provider='ollama')
-
-# Generate flashcards
-output_path = generator.generate_flashcards(
-    unit_name='unit1_introduction',
-    target_cards=50
-)
-
-# Validate output
-validation = generator.validate_output(output_path)
-print(f"Generated {validation['card_count']} cards")
-```
-
-For direct provider access:
-
-```python
-from src.flashcards.generator import ClaudeCardGenerator
-from src.flashcards.ollama_generator import OllamaCardGenerator
-
-# Use Claude directly
-claude_gen = ClaudeCardGenerator(config=config)
-
-# Use Ollama directly
-ollama_gen = OllamaCardGenerator(config=config)
-```
-
-### Custom Card Types
-
-Modify `config.yaml` for subject-specific card types:
-
-```yaml
-card_distribution:
-  conceptual: 0.50          # More conceptual for theory-heavy subjects
-  worked_examples: 0.30     # More examples for math-heavy subjects
-  algorithm: 0.10
-  pattern_recognition: 0.05
-  visual: 0.05
+# 4. Extract with descriptions
+flashbang extract --all
 ```
 
 ## Troubleshooting
@@ -462,16 +318,16 @@ set ANTHROPIC_API_KEY=sk-ant-...
 pip install -e .
 
 # Verify installation
-anki-gen --version
+flashbang --version
 ```
 
 ### Configuration Errors
 ```bash
 # Validate config
-anki-gen config --validate
+flashbang config --validate
 
 # Show current config
-anki-gen config --show
+flashbang config --show
 ```
 
 ### Ollama Not Working
@@ -484,14 +340,11 @@ ollama list
 
 # Pull required model
 ollama pull ministral-3:8b
-
-# Disable if not needed
-# In config.yaml: ollama.enabled: false
 ```
 
 ### Import Errors in Anki
 
-Check these common issues:
+Common issues:
 - **Tab separation**: Must use actual tab characters, not spaces
 - **Column count**: Exactly 3 columns (Front, Back, Tags)
 - **UTF-8 encoding**: File must be UTF-8
@@ -499,20 +352,15 @@ Check these common issues:
 
 ## API Costs
 
-This tool uses the Claude API for flashcard generation. Approximate costs:
+Approximate costs using Claude API:
 
 - **Per unit** (50 cards): ~$0.10-0.30
 - **Full course** (10 units, 500 cards): ~$1-3
 
-Costs depend on:
-- Markdown length
-- Number of cards requested
-- Model used (Sonnet 4.5 by default)
-
 ## Requirements
 
 - Python 3.8+
-- Anthropic API key (for flashcard generation)
+- Anthropic API key (for Claude)
 - Ollama (optional, for image descriptions)
 
 ## Dependencies
@@ -527,39 +375,6 @@ Core dependencies:
 
 See `requirements.txt` for full list.
 
-## Development
-
-```bash
-# Install in development mode
-pip install -e .
-
-# Run tests
-pytest
-
-# Format code
-black src/
-
-# Type checking
-mypy src/
-```
-
-## Contributing
-
-Contributions welcome! Areas for improvement:
-
-- Additional subject configurations (see `docs/SUBJECT_GUIDE.md`)
-- Enhanced image processing
-- Alternative LLM integrations
-- Card quality metrics
-- Web interface
-
-## Resources
-
-- [Anki Manual](https://docs.ankiweb.net/)
-- [Claude API Documentation](https://docs.anthropic.com/)
-- [Subject Configuration Guide](docs/SUBJECT_GUIDE.md)
-- [LaTeX Math Guide](https://www.overleaf.com/learn/latex/Mathematical_expressions)
-
 ## License
 
 MIT License - See LICENSE file for details.
@@ -570,10 +385,3 @@ Created as a tool for automating Anki flashcard creation from educational materi
 - [Anthropic Claude](https://www.anthropic.com/) for intelligent flashcard generation
 - [Ollama](https://ollama.ai/) for optional image descriptions
 - [genanki](https://github.com/kerrickstaley/genanki) for Anki deck creation
-
-## Support
-
-For issues, questions, or contributions:
-- Open an issue on GitHub
-- Check `docs/SUBJECT_GUIDE.md` for subject-specific help
-- Review `CLAUDE_TEMPLATE.md` for detailed usage guide

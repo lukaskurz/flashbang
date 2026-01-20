@@ -106,7 +106,7 @@ def _generate_single_unit(config, unit_name: str, show_images: bool = False, pro
     markdown_path = f"{config.markdown_dir}/{unit_name}.md"
     if not os.path.exists(markdown_path):
         console.print(f"[red]✗ Markdown file not found: {markdown_path}[/red]")
-        console.print("\n[yellow]Run 'anki-gen extract' first to extract PDFs to markdown.[/yellow]")
+        console.print("\n[yellow]Run 'flashbang extract' first to extract PDFs to markdown.[/yellow]")
         return False
 
     # Display header

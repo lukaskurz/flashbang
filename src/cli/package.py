@@ -109,7 +109,7 @@ def package_command(unit=None, package_all=False):
     """
     console.print(Panel.fit(
         "[bold cyan]Package Anki Decks (.apkg)[/bold cyan]",
-        subtitle="anki-gen package"
+        subtitle="flashbang package"
     ))
 
     # Load configuration
@@ -182,8 +182,8 @@ def package_command(unit=None, package_all=False):
         # No arguments provided
         console.print("[yellow]Please specify --unit <name> or --all[/yellow]")
         console.print("\nExamples:")
-        console.print("  [green]anki-gen package --unit unit3_bayesian_networks[/green]")
-        console.print("  [green]anki-gen package --all[/green]")
+        console.print("  [green]flashbang package --unit unit3_bayesian_networks[/green]")
+        console.print("  [green]flashbang package --all[/green]")
         return False
 
     console.print("\n[bold cyan]Next Step:[/bold cyan]")

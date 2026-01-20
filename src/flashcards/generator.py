@@ -55,7 +55,7 @@ class ClaudeCardGenerator(CardGenerationProvider):
 
     def load_markdown(self, unit_name: str) -> str:
         """Load markdown content for a unit."""
-        markdown_path = Path("outputs/markdown") / f"{unit_name}.md"
+        markdown_path = Path(self.config.markdown_dir) / f"{unit_name}.md"
         if not markdown_path.exists():
             raise FileNotFoundError(f"Markdown file not found: {markdown_path}")
 
@@ -64,7 +64,7 @@ class ClaudeCardGenerator(CardGenerationProvider):
 
     def load_image_metadata(self, unit_name: str) -> List[Dict]:
         """Load image descriptions for a unit."""
-        metadata_path = Path("outputs/metadata/image_descriptions.json")
+        metadata_path = Path(self.config.metadata_dir) / "image_descriptions.json"
 
         if not metadata_path.exists():
             logger.warning("Image metadata not found")

@@ -275,6 +275,11 @@ class Config:
         return self.get('output.apkg_dir', 'outputs/apkg')
 
     @property
+    def metadata_dir(self) -> str:
+        """Metadata output directory."""
+        return self.get('output.metadata_dir', 'outputs/metadata')
+
+    @property
     def card_distribution(self) -> Dict[str, float]:
         """Get card type distribution."""
         return self.get('card_distribution', {

@@ -33,6 +33,7 @@ output:
   images_dir: outputs/images
   anki_dir: outputs/anki
   apkg_dir: outputs/apkg
+  metadata_dir: outputs/metadata
 units: {}
 card_distribution:
   conceptual: 0.4

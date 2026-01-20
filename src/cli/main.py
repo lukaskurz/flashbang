@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Main entry point for the anki-gen CLI tool.
+Main entry point for flashbang CLI.
 
 This unified CLI replaces the previous 4-script workflow:
-- extract_pdfs.py → anki-gen extract
-- generate_cards.py → anki-gen generate
-- generate_apkg.py → anki-gen package
-- (new) → anki-gen list
+- extract_pdfs.py → flashbang extract
+- generate_cards.py → flashbang generate
+- generate_apkg.py → flashbang package
+- (new) → flashbang list
 """
 
 import click
@@ -18,16 +18,16 @@ console = Console()
 
 
 @click.group()
-@click.version_option(version=__version__, prog_name="anki-gen")
+@click.version_option(version=__version__, prog_name="flashbang")
 def cli():
     """
-    Anki flashcard generation tool - Extract PDFs and generate decks automatically.
+    flashbang - Bang out flashcards from PDFs instantly
 
     Workflow:
-    1. anki-gen init - Initialize configuration for a new subject
-    2. anki-gen extract - Extract PDFs to markdown and images
-    3. anki-gen generate - Generate flashcards from markdown
-    4. anki-gen package - Package flashcards into .apkg files
+    1. flashbang init - Initialize configuration for a new subject
+    2. flashbang extract - Extract PDFs to markdown and images
+    3. flashbang generate - Generate flashcards from markdown
+    4. flashbang package - Package flashcards into .apkg files
     """
     pass
 

@@ -60,7 +60,7 @@ class OllamaCardGenerator(CardGenerationProvider):
 
     def load_image_metadata(self, unit_name: str) -> List[Dict]:
         """Load image descriptions for a unit."""
-        metadata_path = Path("outputs/metadata/image_descriptions.json")
+        metadata_path = Path(self.config.metadata_dir) / "image_descriptions.json"
 
         if not metadata_path.exists():
             logger.warning("Image metadata not found")
