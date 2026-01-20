@@ -1,8 +1,91 @@
-venv/
-.env
+# Python
 __pycache__/
-*.pyc
-outputs/markdown/
-outputs/anki/
-*.log
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+
+# Claude Code
+.claude/
+
+# Project-specific outputs
+outputs/markdown/
+outputs/images/
+outputs/anki/
+outputs/apkg/
+outputs/metadata/
+
+# Source PDFs (usually large and course-specific)
+pdfs/*.pdf
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# OS
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+*~
+
+# Keep directory structure with .gitkeep files
+!outputs/.gitkeep
+!outputs/markdown/.gitkeep
+!outputs/images/.gitkeep
+!outputs/anki/.gitkeep
+!outputs/apkg/.gitkeep
+!outputs/metadata/.gitkeep
+!pdfs/.gitkeep
