@@ -258,16 +258,20 @@ Nothing else. No introductions, no explanations, no markdown formatting around t
         markdown_content = self.load_markdown(unit_name)
         images = self.load_image_metadata(unit_name)
 
-        # Calculate dynamic limit based on page count
+        # Calculate dynamic limit based on page count (1.5 cards per page)
         page_count = self.get_pdf_page_count(unit_name)
-        max_cards_from_pages = int(page_count * 1.5) if page_count > 0 else target_cards
-        effective_target = min(target_cards, max_cards_from_pages)
-
-        logger.info(
-            f"PDF has {page_count} pages. "
-            f"Max cards from pages: {max_cards_from_pages}. "
-            f"Effective target: {effective_target} (requested: {target_cards})"
-        )
+        if page_count > 0:
+            effective_target = int(page_count * 1.5)
+            logger.info(
+                f"PDF has {page_count} pages. "
+                f"Target: {effective_target} cards (1.5 per page). "
+                f"Config requested: {target_cards}"
+            )
+        else:
+            effective_target = target_cards
+            logger.warning(
+                f"Could not determine page count, using config target: {target_cards}"
+            )
 
         # Create prompt
         prompt = self._create_generation_prompt(
